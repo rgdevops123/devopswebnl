@@ -1,0 +1,43 @@
+{% extends "base_site.html" %}
+
+{% block title %} Kubernetes {% endblock title %}
+
+{% block stylesheets %}
+  {{ super() }}
+{% endblock stylesheets %}
+
+{% block content %}
+
+    <div class="right_col" role="main">
+      <div class="">
+        <div class="page-title">
+
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="row">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+              <div class="animated fadeIn x_title">
+                <h2 id="devopsweb-page-title">Kubernetes Overview</h2>
+
+                <div class="clearfix"></div>
+              </div>
+              <div class="animated zoomIn x_content">
+                <!-- Content provided by www.tutorialspoint.com -->
+                <pre width="200px;"><strong>{{ content }}</strong></pre>
+                <center><a><img width=100% style="padding:10px 10px 10px;"  src="{{ url_for('static', filename='images/kubernetes1.jpg') }}"></a></center>
+                <center><a><img width=100% src="{{ url_for('static', filename='images/kubernetes2.jpg') }}"></a></center>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+{% endblock content %}
+
+{% block javascripts %}
+  {{ super()}}
+{% endblock javascripts %}

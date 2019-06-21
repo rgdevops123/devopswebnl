@@ -1,0 +1,37 @@
+# Environment File
+.env
+.env.sh
+
+# byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# tests and coverage
+*.pytest_cache
+.coverage
+coverage
+coverage_html_report
+
+# database & logs
+*.db
+*.log
+logs
+
+# venv
+env
+venv
+
+# vim temporary files
+*.swp
+*.swo
+
+# other
+.DS_Store
+
+# sphinx docs 
+_build
+_static
+_templates
+
+# javascript
+package-lock.json

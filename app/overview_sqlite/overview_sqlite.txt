@@ -1,0 +1,237 @@
+
+   *** Installing SQLite3 Database. ***
+
+Execute the below to install SQLite3 on Centos/RedHat.
+
+      $ sudo yum -y install sqlite
+
+
+
+   *** Making/Accessing a SQLite3 Database. ***
+
+If you already have a database file called test.db then you can select and access it with the below command.  If the db file does not exist the below command will create it.  If it does exist then it will select it to be accessed.
+
+      $ sudo sqlite3 test.db
+
+
+
+   *** View Help. ***
+
+The SQLite3 shell will consider any command with . (period) in front of it a SQLite3 command.
+
+      sqlite> .help
+
+
+
+   *** Configure SQLite3 Output. ***
+
+Turn on column mode (.mode col). 
+Turn on column headers (.headers on).
+
+      sqlite> .mode column
+      sqlite> .headers on
+
+
+
+   *** Creating Tables. ***
+
+Make a table called test.  After the table is made, the database file will exist on disk with the table named test and have 2 columns. One called ids and one called value.  The ids column is an integer primary key.  SQLite3 will make this an auto increment column.  Which means if there is no number then SQLite3 will generate a number for the column on the first insert.  After the first insert it will auto increment the numbers from there.  All of this is done with the SQL create command.
+
+      sqlite> create table test (ids integer primary key, value text); 
+
+
+
+   *** Creating Views. ***
+
+Create a view.  Views are like virtual tables.  People also call them derived tables.  This is because their contents are derived from other tables.  Views look like regular tables, but they are not.  Views are dynamically generated.  A view is made up of relational expressions and takes other tables to produce a new table.
+
+The following example will create a view called testview and will select everything from the test table we just created.  Most views are good for queries you keep using over and over again.  You create the view to use as a temporary table and then query the view just like a table.  The view eliminates the need to keep using that same redundant query.
+
+Creating views like creating tables is done with the SQL create command.
+
+      sqlite> create view testview AS select * from test;
+
+
+
+   *** Creating Indexes. ***
+
+Indexes are designed to speed up queries under certain conditions.  If our test table had 100,000 entries and we wanted to find a small group of entries the database would have to scan all 100,000 entries looking for our small group.  If we make an index of all these entries then we will be able to scan all the entries much faster.
+
+The bad thing is that indexes increase the size of the database because they keep a copy of all the columns they index.  One other bad thing is that if you insert, update or delete a record the database has to modify the record and the index of that table.  This means that indexes can slow down inserts, updates, deletes, etc.  If used wisely indexes can give you a huge performance boost.  Here is how to make an index for our table test on column value.
+
+Creating indexes like creating tables and views is done with the SQL create command.
+
+      sqlite> create index testindex on test (value);
+
+
+
+   *** Listing Views, Tables and Indexes. *** 
+
+To see all the tables and views in the database we use the SQLite .tables command. You can also use the SQL like operator to find tables and views with a pattern. Using the % symbol in the example below we show all the tables and views beginning with the letter t.
+
+      sqlite> .tables
+
+test      testview
+
+      sqlite> .tables t%
+test
+
+To view any indexes a table has we can use the SQLite .indices command. To see them for our test table we would do the following.
+
+      sqlite> .indices test
+
+testindex
+
+
+   *** Listing schema information. ***
+
+To see database schema information we use the SQLite .schema command. This give you the create command that was used to create the tables. If you created an index on any columns then this will also show up.
+
+      sqlite> .schema test
+
+CREATE TABLE test (ids integer primary key, value text);
+CREATE INDEX testindex on test (value);
+
+
+   *** Inserting data into tables. ***
+
+Now let's put in some data in the db with some SQL insert statements.
+
+      sqlite> insert into test (value) values('value1');
+      sqlite> insert into test (value) values('value2');
+      sqlite> insert into test (value) values('value3');
+
+
+   *** Viewing the data. ***
+
+Let's use the SQL select command to look at the data we inserted. Remember we turned on column mode (.mode col) and column headers (.headers on) at the beginning of this page so it's easier to read the output.
+
+      sqlite> select * from test;
+
+ids         value
+----------  ----------
+1           value1
+2           value2
+3           value3
+
+
+   *** Delete a Row in a table. ***
+
+      sqlite> delete from test where ids = 2;
+      sqlite> delete from test where value LIKE '%value2%';
+
+   *** Viewing your SQLite3 databases. ***
+
+To see the databases that are currently open use the SQLite .databases command. It will show the main and temp databases and where they are on the system.
+
+      sqlite> .databases
+
+seq  name             file
+---  ---------------  ------------------------------------
+0    main             /home/user/test.db
+1    temp             /var/tmp/etilqs_oCUXLLbZO4TjUNI
+
+
+   *** Exporting your data. ***
+
+You can export all of your database objects to a file for backup using the SQLite .output and .dump commands. These commands will output all of the data from the database. The first .output line directs any output from now on to the file /tmp/test.sql. The second line .dump will export all of the data in the objects in the database. If the file is already there it will overwrite that file. The last command will set the output back to the screen like we had it.
+
+      sqlite> .output /tmp/test.sql
+      sqlite> .dump
+      sqlite> .output stdout
+
+To look at what the file looks like open a new shell and cat that file.
+
+user@host:~      $ cat /tmp/test.sql
+
+PRAGMA foreign_keys=OFF;
+BEGIN TRANSACTION;
+CREATE TABLE test (ids integer primary key, value text);
+INSERT INTO "test" VALUES(1,'value1');
+INSERT INTO "test" VALUES(2,'value2');
+INSERT INTO "test" VALUES(3,'value3');
+CREATE VIEW testview AS select * from test;
+CREATE INDEX testindex on test (value);
+COMMIT;
+
+The file contains all the information you need to re-create your database. From creating the tables to inserting all the data. This is used mostly to backup databases or to export the data from one database type to another. For backing up purposes it is usually easier to just copy the SQLite3 db file to another location.
+
+
+   *** Importing external data. ***
+
+If you would like to import the data you exported using the SQLite .dump command it's as easy as using the SQLite .read command. In the example below the first command makes a new database from the system command line (shell). The second command imports the data we exported in the previous example. The last command shows all the data in the new database.
+
+      $ sudo sqlite3 testrecover.db
+      sqlite> .read /tmp/test.sql
+      sqlite> select * from test;
+
+ids         value
+----------  ----------
+1           value1
+2           value2
+3           value3
+
+
+   *** Removing tables, triggers, views, and indexes. ***
+
+To remove any index, table, trigger, or view you have made use the SQL drop command. The syntax is the word drop then what you want to drop and then the name of the thing you want to drop. Below is and example of dropping one of each kind.
+
+      sqlite> drop index indexname
+      sqlite> drop table tablename
+      sqlite> drop trigger triggername
+      sqlite> drop view viewname
+
+
+   *** Show the current values for various settings. ***
+
+      sqlite> .show
+
+   *** Exiting. ***
+
+To exit out of the SQLite prompt use the SQLite .exit or .quit command. Both work the same way.
+
+      sqlite> .exit
+      sqlite> .quit
+
+
+
+                *** SQLite From The Shell ***
+
+   *** Usage options. ***
+
+      $ sudo sqlite3 --help
+
+
+   *** Execute SQL statements. ***
+
+      $ sudo sqlite3 -header -column test.db 'select * from test'
+
+ids         value
+----------  ----------
+1           value1
+2           value2
+3           value3
+
+      $ sudo sqlite3 -header -column test.db '.schema'
+
+CREATE TABLE test (ids integer primary key, value text);
+CREATE VIEW testview AS select * from test;
+CREATE INDEX testindex on test (value);
+
+
+   *** Export a database. ***
+
+      $ sudo sqlite3 test.db '.dump' > dbbackup
+
+     - Compress the Dump. -
+      $ sudo sqlite3 test.db '.dump' | gzip -c > dbbackup.gz
+
+
+   *** Import a database. ***
+
+      $ sudo sqlite3 test3.db < dbbackup
+
+     - Import a Compressed Dump. -
+      $ gunzip -c dbbackup.gz | sudo sqlite3 test3.db
+
+

@@ -1,0 +1,40 @@
+{% extends "base_site.html" %}
+
+{% block title %} Python {% endblock title %}
+
+{% block stylesheets %}
+  {{ super() }}
+{% endblock stylesheets %}
+
+{% block content %}
+
+    <div class="right_col" role="main">
+      <div class="">
+        <div class="page-title">
+
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="row">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+              <div class="animated fadeIn x_title">
+                <h2>Python Overview</h2>
+
+                <div class="clearfix"></div>
+              </div>
+              <div class="animated zoomIn x_content">
+                <pre width="200px"><strong>{{ content }}</strong></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+{% endblock content %}
+
+{% block javascripts %}
+  {{ super()}}
+{% endblock javascripts %}

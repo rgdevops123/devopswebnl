@@ -1,0 +1,230 @@
+
+
+            PostgreSQL is an open source object-relational database system (DBMS).
+
+
+
+   *** Installation (CentOS 7) ***
+
+      $ sudo yum -y install postgresql-server postgresql-contrib
+
+
+
+   *** Create a new PostgreSQL database cluster ***
+
+      $ sudo postgresql-setup initdb
+
+
+
+   *** Configure Password Authentication ***
+
+      $ sudo vim /var/lib/pgsql/data/pg_hba.conf
+
+
+   Find the lines that looks like this, near the bottom of the file:
+
+      pg_hba.conf excerpt (original)
+      host    all             all             127.0.0.1/32            ident
+      host    all             all             ::1/128                 ident
+
+   Then replace "ident" with "md5", so they look like this:
+
+      pg_hba.conf excerpt (updated)
+      host    all             all             127.0.0.1/32            md5
+      host    all             all             ::1/128                 md5
+
+
+
+   *** Start and Enable PostgreSQL ***
+
+      $ sudo systemctl start postgresql
+      $ sudo systemctl enable postgresql
+
+
+
+   *** Switch to the postgres user ***
+
+      $ sudo -i -u postgres
+
+
+
+   *** Postgres Prompt ***
+
+      $ psql
+
+
+
+   *** Exit the PostgreSQL ***
+
+      postgres=# \q
+
+
+
+   *** Create a New Role ***
+
+      $ createuser --interactive
+
+
+
+   *** Create a New Database ***
+
+      $ createdb test1
+
+The way that Postgres is set up by default (authenticating roles that are requested by matching system accounts) also comes with the assumption that a matching database will exist for the role to connect to.
+
+So if you have a user called test1, that role will attempt to connect to a database called test1 by default.
+
+You can create the appropriate database by simply calling the above command as the postgres user.
+
+
+
+   *** Connect to Postgres with the New User ***
+
+      $ sudo adduser test1
+      $ sudo -i -u test1
+      $ psql
+
+The above connects to the test1 database as the test1 Postgres role.
+
+
+
+   *** Connect to a different Database ***
+
+      $ psql -d postgres
+
+Display information about the Postgres user you're logged in as and the database you're currently connected to with the following:
+
+      postgres=# \conninfo
+
+      Output:
+      You are connected to database "postgres" 
+         as user "postgres" via socket in "/var/run/postgresql" at port "5432".
+
+
+
+   *** Create and Delete Tables ***
+
+      postgres=# CREATE TABLE table_name (
+      postgres=#     column_name1 col_type (field_length) column_constraints,
+      postgres=#     column_name2 col_type (field_length),
+      postgres=#     column_name3 col_type (field_length)
+      postgres=# );
+
+         EXAMPLE:
+
+      postgres=# CREATE TABLE playground (
+      postgres=#     equip_id serial PRIMARY KEY,
+      postgres=#     type varchar (50) NOT NULL,
+      postgres=#     color varchar (25) NOT NULL,
+      postgres=#     location varchar(25) check (location in ('north', 'south', 'west', 'east')),
+      postgres=#     install_date date
+      postgres=# );
+
+
+
+   *** View Tables ***
+
+      postgres=# \d
+
+      Output:
+                         List of relations
+       Schema |          Name           |   Type   |  Owner   
+      --------+-------------------------+----------+----------
+       public | playground              | table    | postgres
+       public | playground_equip_id_seq | sequence | postgres
+      (2 rows)
+
+
+As you can see, we have our playground table, but we also have something called playground_equip_id_seq that is of the type sequence. This is a representation of the "serial" type we gave our equip_id column. This keeps track of the next number in the sequence.
+
+If you want to see just the table, you can type:
+
+      postgres=# \dt
+
+      Output:
+                 List of relations
+       Schema |    Name    | Type  |  Owner   
+      --------+------------+-------+----------
+       public | playground | table | postgres
+      (1 row)
+
+
+
+   *** Add Data to a Table *** 
+
+      postgres=# INSERT INTO playground (type, color, location, install_date) \
+                    VALUES ('slide', 'blue', 'south', '2014-04-28');
+
+      postgres=# INSERT INTO playground (type, color, location, install_date) \
+                    VALUES ('swing', 'yellow', 'west', '2010-08-16');
+
+
+
+   *** Query Data in a Table *** 
+
+      postgres=# SELECT * FROM playground;
+
+      Output:
+       equip_id | type  | color  | location  | install_date 
+      ----------+-------+--------+-----------+--------------
+              1 | slide | blue   | south     | 2014-04-28
+              2 | swing | yellow | northwest | 2010-08-16
+      (2 rows)
+
+
+
+   *** Delete Data in a Table *** 
+
+      postgres=# DELETE FROM playground WHERE type = 'slide';
+
+
+      postgres=# SELECT * FROM playground;
+
+      Output:
+       equip_id | type  | color  | location  | install_date 
+      ----------+-------+--------+-----------+--------------
+              2 | swing | yellow | northwest | 2010-08-16
+      (1 row)
+
+
+
+   *** Add Columns to a Table ***
+
+      postgres=# ALTER TABLE playground ADD last_maint date;
+
+      postgres=# SELECT * FROM playground;
+
+      Output:
+       equip_id | type  | color  | location  | install_date | last_maint 
+      ----------+-------+--------+-----------+--------------+------------
+              2 | swing | yellow | northwest | 2010-08-16   | 
+      (1 row)
+
+
+
+   *** Delete Columns from a Table ***
+
+      postgres=# ALTER TABLE playground DROP last_maint;
+
+      postgres=# SELECT * FROM playground;
+
+      Output:
+       equip_id | type  | color  | location  | install_date 
+      ----------+-------+--------+-----------+--------------
+              2 | swing | yellow | northwest | 2010-08-16
+      (1 row)
+
+
+
+   *** Update Data in a Table ***
+
+      postgres=# UPDATE playground SET color = 'red' WHERE type = 'swing';
+
+      postgres=# SELECT * FROM playground;
+
+      Output:
+       equip_id | type  | color | location  | install_date 
+      ----------+-------+-------+-----------+--------------
+              2 | swing | red   | northwest | 2010-08-16
+      (1 row)
+

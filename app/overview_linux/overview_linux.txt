@@ -1,0 +1,2807 @@
+Q: What is System load/CPU Load?
+
+
+ A measurement of CPU over or under-utilization in a Linux system; the
+number of processes which are being executed by the CPU or in waiting
+state. Load average – is the average system load calculated over a
+given period of time of 1, 5 and 15 minutes.
+
+
+Q: What is Main PID?
+
+Main PID is the PID of the process that is started using ExecStart=
+options (in the example sshd). The Process: is used for any other
+process that might have been started by the service using
+ExecStartPre, ExecStartPost, ExecStopPost, etc options. (in this
+example, sshd-keygen has been started using the ExecStartPre=option).
+You can have multiple lines on Process: if there are more than one
+processes started by the service, other than the main process. If
+there is no other process involved, you will only see the Main PID
+value.
+
+I admit this is not very clear in the docs for ExecStartPre but the
+doc for ExecStartclarifies that the main process is the one started by
+that option, except for Type=forking, in which case, the daemon
+process is considered the main process.
+
+
+Q: Create a system account with a specified home directory.
+
+# useradd -r app1 -d /apps/app1
+     Creates an "app1" user and an "/apps/app1" home directory.
+
+-r, --system
+           Create a system account.
+
+           System users will be created with no aging information in
+/etc/shadow, and their numeric identifiers are chosen in the
+           SYS_UID_MIN-SYS_UID_MAX range, defined in /etc/login.defs,
+instead of UID_MIN-UID_MAX (and their GID counterparts for the
+           creation of groups).
+
+           Note that useradd will not create a home directory for such
+an user, regardless of the default setting in /etc/login.defs
+           (CREATE_HOME). You have to specify the -m options if you
+want a home directory for a system account to be created.
+
+-d, --home-dir HOME_DIR
+           The new user will be created using HOME_DIR as the value
+for the user's login directory. The default is to append the LOGIN
+           name to BASE_DIR and use that as the login directory name.
+
+
+Q:  Create a shell script to add a path.
+
+if ! echo ${PATH} | grep -q /opt/jdk1.8.0_111/bin ; then
+   export PATH=/opt/jdk1.8.0_111/bin:${PATH}
+fi
+
+
+Q: What is WildFly?
+
+WildFly, formerly known as JBoss AS, or simply JBoss, is an
+application server authored by JBoss, now developed by Red Hat.
+WildFly is written in Java and implements the Java Platform,
+Enterprise Edition(Java EE) specification.
+7
+Q: What is a JavaBean?
+
+A JavaBean is just a standard
+
+All properties private (use getters/setters)
+A public no-argument constructor
+Implements Serializable.
+
+
+Q: What is JBOSS?
+
+JavaBeans Open Source Software
+
+
+Q: What is Apache Tomcat?
+
+Apache Tomcat (or simply Tomcat) is an open source web server and
+servlet container developed by the Apache Software Foundation (ASF).
+Tomcat implements the Java Servlet and the JavaServer Pages ( JSP )
+specifications from Oracle Corporation, and provides a “pure Java”
+HTTP web server environment for Java code to run.
+
+
+Q: What is the difference between Apache and Tomcat?
+
+Apache Tomcat is used to deploy your Java Servlets and JSPs. So in
+your Java project you can build your WAR (short for Web ARchive) file,
+and just drop it in the deploy directory in Tomcat. So basically
+Apache is an HTTP Server, serving HTTP. Tomcat is a Servlet and JSP
+Server serving Java technologies.
+
+
+Q: What is the difference between Tomcat and JBoss?
+
+The Major Differences Between JBoss and Tomcat. Both JBoss and Tomcat
+are Java servlet application servers, but JBoss is a whole lot more.
+... One way to think of it is that JBoss is a JEE stack that includes
+a servlet container and web server, whereas Tomcat, for the most part,
+is a servlet container and web server.
+
+
+Q: What is IT orchestration:
+
+ task automation, application deployment, and cloud provisioning.
+
+Q: How do you create a file with the date and time appended?
+
+$ touch data.txt.$(date +"%Y%m%d_%H%M%S")
+$ tar -zcvf /tmp/devopsweb.$(date +"%Y%m%d_%H%M%S") devopsweb
+
+
+$ ls
+data.txt.20190110_180620
+
+$ date
+Thu Jan 10 18:06:24 EST 2019
+
+
+Q: Where is a user's mail file located?
+
+The webadmin's mail file is located:
+   /var/spool/mail/webadmin
+
+
+Q: What is Ubuntu's APT?
+
+Advanced Packaging Tool (APT)
+
+
+Q: What is RedHat's/Centos's YUM?
+
+Yellow dog Updater, Modified
+
+Q: How do you show IP addresses assigned to all network interfaces?
+
+      $ ip addr show
+
+
+Q: How do you shows the current neighbor table in kernel?
+
+       $ ip neigh show
+
+
+Q: How do you bring up interface eth0.
+
+       $ ip link set eth0 up
+
+
+Q: How do you bring down interface eth0?
+
+       $ ip link set eth0 down
+
+
+Q: How do you show table routes?
+
+       $ ip route show
+
+
+Q: Where are the sudoers logs?
+
+*** RedHat ***
+/var/log/secure
+
+*** Debian/Ubuntu  ***
+/var/log/auth.log
+
+
+Q: What are three main types of I/O?
+
+
+binary I/O
+raw I/O
+text I/O
+
+
+Q: What are the default filesystems to install?
+
+/                   10240      10GB
+/boot             1024        1GB
+swap             2048        2GB
+/var                1024        1GB
+/home           1024        1GB
+/tmp             1024        1GB
+/data             3072        3GB
+
+Mail Servers:
+  /var/spool
+
+
+Q: What is a KERNEL?
+
+     Software on the server that handles
+Inter-process Communication,
+I/O,
+Memory Management,
+Networking,
+Process and Thread Management,
+Security
+
+
+Q: How do you modify kernel parameters?
+
+# vim /proc or /proc/sys/*
+   OR
+# vim /etc/sysctl.conf OR /etc/sysctl.d/99-example.conf
+# sysctl –p    ### To update.
+# sysctl –a    ### To check & confirm.
+
+
+Q: How do you Enable IP Forwarding?
+
+$ echo "net.ipv4.ip_forward = 1"|sudo tee /etc/sysctl.d/99-ipforward.conf
+net.ipv4.ip_forward = 1
+
+$ sudo sysctl -p /etc/sysctl.d/99-ipforward.conf
+net.ipv4.ip_forward = 1
+
+
+Q: What is the NFS server config file & contents
+
+NFS: ServerIP: 10.0.0.3
+server# vim /etc/exports
+...
+#/data/web   *(rw,sync)
+/data/web    10.0.0.0/24(rw,sync)
+...
+
+
+Q: How do you restart NFS?
+
+server# systemctl restart nfs
+
+
+Q: How do you check what a server is exporting?
+
+server# showmount -e 10.0.0.3
+Export list for 10.0.0.3:
+/data/web 10.0.0.0/24
+
+ client# showmount -e 10.0.0.3
+Export list for 10.0.0.3:
+/data/web 10.0.0.0/24
+
+
+Q: How do you make a directory?
+
+client# mkdir /data/web
+
+
+Q: How do you mount an NFS directory on a client?
+
+client# mount -t nfs 10.0.0.3:/data/web /data/web
+
+                   OR
+A
+client# vim /etc/fstab
+Device.  Mount Point.  Filesystem Format.  Mount Options.   Dump
+Value.   Filesystem Check Order.
+...
+10.0.0.3:/data/web   /data/web   nfs   defaults   0   0
+...
+
+client# mount -a
+
+
+Q: What is lost+found used for?
+
+   A: fsck puts files from damaged filesystems there.
+
+
+Q: How do you check what filesystems are mounted?
+
+client# df -h
+Filesystem    Size    Used   Avail Use%    Mounted on
+...
+10.0.0.3:/data/web 2.9G 1.2G 1.7G 41% /data/web
+
+
+Q: How do you list Kernel Modules?
+
+- lsmod / modprobe 2XTAB ENT
+
+
+Q: How do you install Kernel Modules?
+
+- insmod / modprobe -a <mod>
+
+
+Q: How do you remove Kernel Modules?
+
+- rmmod / modprobe -r <mod>
+
+
+Q: Where are kernel modules stored?
+
+   '/lib/modules/kernel-version/'
+
+
+Q: What are some performance monitoring tools?
+
+free, iostat, netstat, sar, vmstat
+
+
+Q: What is vmstat?
+
+Virtual Memory Statistics
+
+
+Q: What is the format of the vmstat command?
+
+# vmstat 5 5
+  vmstat delay count
+
+Q: What is the output of the vmstat command?
+
+   procs    r b
+   memory   swap free buff/cache
+   swap     si so
+   io       bi bo
+   system   in cs
+   cpu      us sys id wa st
+
+
+Q: How do you check network port usage?
+
+   netstat
+          -a  (port usage)
+          -l   (listeningPorts)
+          -n  (I.P.’s)
+          -p  (processes)
+          -r   (routingTable)
+          -i   (interface~errors)
+          -s  (stats~packetsDropped)
+
+
+Q: How would you perform a Network Throughput Test?
+
+ftp> put "|dd if=/dev/zero bs=1024k count=1024" /dev/null
+
+
+Q: How can you check to see when the server last rebooted?
+
+# last | grep reboot
+
+
+Q: How can you check the last time a user logged in?
+
+# last | grep jyork
+
+
+Q: How do you add a user?
+
+# useradd -c "Jane York" -m jyork
+
+-c: COMMENT
+-m: Create the user's home directory if it does not exist.
+
+
+Q: How do you check SWAP space? 3 ways...
+
+  # swapon -s
+  # cat /proc/swaps
+  # cat /proc/meminfo \
+            | grep -i swap
+
+
+   Q: How do you create a SWAP space file?
+
+  # dd if=/dev/zero of=/swap bs=1024k count=1024
+
+  # mkswap /swap
+  # swapon /swap
+  # chmod 600 /swap
+
+   # vi /etc/fstab
+   /swap swap swap defaults 0 0
+
+  # swapon -s    (To check.)
+
+
+   Q: How do you add a new pv, vg, lv & fs?
+
+
+ # fdisk -l
+ # fdisk /dev/sdc
+ Command (m for help): l    (ELL/list partition types)
+   82  Linux swap
+   8e  Linux LVM
+ Command (m for help): n    (add new partition)
+ Command (m for help): p    (primary partition 1-4)
+ Command (m for help): First Cylinder: 7067
+ Command (m for help): Last Cylinder: +33G
+
+ Command (m for help): p    (print the partition table)
+ Command (m for help): d    (delete a partition)
+ Command (m for help): t    (change a partition's system id)
+
+ Command (m for help): w    (write table to disk)
+ # partprobe
+ # init 6
+ # fdisk -l
+ # pvcreate /dev/sdc1
+ # vgcreate vg03 /dev/sdc1
+ ### vgextend vg03 /dev/sdc1
+ # lvcreate -L 10G -n data3 vg03
+ # mkfs -t ext3 /dev/vg03/data3
+ # mkdir /data3
+
+ # vim /etc/fstab
+ +++
+ /dev/vg03/data3 /data3 ext3 defaults,usrquota,grpquota 1 2
+ +++
+
+# mount -a
+
+# cd /data
+# vim rsync_files.txt
++++
+backups
+python_code_examples
+python_mods_examples
+rsync_files.txt
+sreweb
++++
+
+
+# for i in `cat rsync_files.txt`; do rsync -av $i /data3; done
+
+    ***fdisk, partprobe, ssm, lvm
+
+
+Q: How can you view disk and LVM information?
+
+ # fdisk -l
+ # ssm list
+ # pvdisplay
+ # vgdisplay
+ # lvdisplay
+
+
+Q: How do you view free disk space:
+
+# parted
+> select /dev/sdb
+> print free
+
+
+Q: How do you use fdisk?
+
+fdisk /dev/sda
+m (help/command list)
+l    (ELL/list partition types)
+n   (add new partition)
+p   (primary partition 1-4)
+First Cylinder: 7067
+Last Cylinder: +33G
+w   (write table to disk)
+
+
+Q: How do you get the system to apply the fdisk changes?
+
+# partprobe OR reboot
+
+
+Q: How do you create a new filesystem?
+
+# mkfs -t ext4 /dev/sda3
+
+
+Q: How fo you make a directory?
+
+mkdir /xen
+
+
+Q: Where is the filesystem table stored?
+
+# vi /etc/fstab
+/dev/sda4 /xen ext4 defaults 1 1
+Dump Value: 0 or 1
+   0 = Ignore.
+   1 = Back it up.
+Filesystem Check Order:
+   0 = Ignore.
+   1 = Check Filesystem
+
+# mount -a
+
+
+Q: How do you remove a Logical Volume?
+
+ # lvremove /dev/vg03/data3
+
+
+Q: How do you remove a Physical Volume from Volume Group?
+
+# vgreduce vg03 /dev/sda3
+
+
+Q: How do you delete a Physical Volume?
+
+# pvremove /dev/sda3
+
+
+Q: What is the /proc file system?
+
+   a virtual file system that provides detailed information about
+Linux kernel, hardware and running processes.
+CPU
+ -/proc/cpuinfo
+ -/proc/interrupts
+ -/proc/version
+
+MEMORY
+ -/proc/meminfo
+ -/proc/swaps
+ ÷/proc/sys/vm/drop_caches
+
+DISK
+ ÷/proc/filesystems
+ -/proc/mdstat
+ -/proc/mounts
+ -/proc/partitions
+
+PROCESSES
+1 2 3 15681 8903 5932
+
+NETWORKING
+ ÷/proc/net/bonding/bond0
+
+
+Q: Tell me something about ext2?
+
+    e2fsck
+
+
+Q: Tell me something about ext3?
+
+    Journaling
+
+
+Q: How do you disable login to a user?
+
+/bin/false &  /bin/nologin
+
+
+Q: How do you restrict root login to console?
+
+# vim  /etc/ssh/sshd_config
++++
+#PermitRootLogin yes
+PermitRootLogin no
+AllowUsers
++++
+
+# systemctl restart ssh
+
+
+Q: What is pwconv?
+
+Creates /etc/shadow from /etc/passwd.
+
+
+Q: What is pwunconv?
+
+ Creates /etc/passwd from
+/etc/passwd and /etc/shadow and then removes /etc/shadow.
+
+
+Q: What is grpconv?
+
+ Creates /etc/gshadow from
+ /etc/group.
+
+
+Q: What is grpunconv?
+
+  Creates /etc/group from
+ /etc/group and /etc/gshadow and then removes /etc/gshadow.
+
+
+Q: What is gpasswd?
+
+Administers /etc/group and /etc/gshadow
+
+
+Q: What is umask?
+
+   ‘User file creation mask'
+
+
+Q: What is the umask default?
+
+    022 (Default)
+
+
+Q: What is repquota?
+
+View user disk usage and quotas for file systems.
+A user’s quotas and number of files and amount of space (in kilobytes)
+is printed
+
+ Acronym:
+
+FQEQR
+- /etc/fstab - defaults,usrquota,grpquota
+    # mount -o remount /data3
+- quotacheck -cugv /data3 - creates quota config files
+- edquota to create a edit user quotas
+- quotaon /data3
+- repquota -as OR -u /data3
+
+
+Q: How do you enable User and Group Disk Quota on a filesystem?
+
+# vim /etc/fstab
++++
+/dev/vg01/data3         /data3                  ext4
+defaults,usrquota,grpquota        1 2
++++
+
+# mount -o remount /data3
+
+
+# mount | grep /data3
+/dev/mapper/vg01-data3 on /data3 type ext4
+(rw,relatime,quota,usrquota,grpquota,data=ordered)
+
+
+Q: How do you create Quota Database Files?
+
+# quotacheck -cugv /data3
+
+-c : create quota file and don’t use the existing file
+-v : verbose output
+-u : user disk quota
+-g : group disk quota
+
+Above Command will create aquota.user & aquota.group files under /data3
+
+
+Q: How do you turn on quota on a filesystem . . . I.E.: /data3?
+
+# quotaon /data3/
+
+
+Q: How do you assign user & group disk quota?
+
+# edquota -u jsmith
+Disk quotas for user jsmith (uid 1002):
+  Filesystem                   blocks       soft       hard     inodes
+    soft     hard
+  /dev/mapper/vg01-data3            0       3000       6000          0
+       0        0
+
+
+soft : It will warn the users if the soft limit of disk quota reached
+( size is in KB), in above example for jack user soft limit is 3000 KB
+( approx 3MB )
+
+hard : It will not allow the users to create new files once the hard
+limit is reached. ( Size in KB ), in above example hard limit for jack
+user is 6000 KB ( approx 6 MB )
+
+Note : We can also set the Quota on the basis of the inodes ( i.e
+numbers of files that the user can create on particular file system)
+
+
+Q: How do you display Quota report for Users in human readable form?
+
+# repquota -as
+
+-a, --all
+   Report on all filesystems indicated in /etc/mtab to be read-write
+with quotas.
+
+-s, --human-readable
+   Try to report used space, number of used inodes and limits in more
+appropriate units than the default ones.
+
+
+
+*** Report for user quotas on device /dev/mapper/vg01-data3
+Block grace time: 7days; Inode grace time: 7days
+                        Space limits                File limits
+User            used    soft    hard  grace    used  soft  hard  grace
+----------------------------------------------------------------------
+root      --    641M      0K      0K           9570     0     0
+dockerroot --  10476K      0K      0K           2212     0     0
+apache    --  25004K      0K      0K             20     0     0
+jsmith    +-   6000K   3000K   6000K  7days       1     0     0
+
+
+
+# repquota -u /data3
+
+-u, --user
+    Report quotas for users. This is the default.
+
+*** Report for user quotas on device /dev/mapper/vg01-data3
+Block grace time: 7days; Inode grace time: 7days
+                        Block limits                File limits
+User            used    soft    hard  grace    used  soft  hard  grace
+----------------------------------------------------------------------
+root      --  655624       0       0           9570     0     0
+dockerroot --   10476       0       0           2212     0     0
+apache    --   25004       0       0             20     0     0
+jsmith    +-    6000    3000    6000  6days       1     0     0
+
+
+Q: What is dmesg?
+
+Prints the message buffer of the kernel. The output of this command
+typically contains the messages produced by the device drivers.
+
+
+Q: What is logrotate?
+
+Systematically rotates and archives log files.
+
+
+Q: What are some XOR implementations?
+
+   RAID XOR
+   Network Bonding XOR
+
+
+Q: What does sar stand for?
+
+   System Activity Report
+
+
+Q: How do you install sar?
+
+   # yum -y install sysstat
+
+
+Q: What does the default sar cron look like?
+
+# cat /etc/cron.d/sysstat
+
+# Run system activity accounting tool every 10 minutes
+*/10 * * * * root /usr/lib64/sa/sa1 1 1
+
+# Generate a daily summary of process accounting at 23:53
+
+53 23 * * * root /usr/lib64/sa/sa2 -A
+
+So the first cron entry will run every 10 minutes which will call the
+sadc utility and collect system stats and store it in a binary file.
+And the second cron entry will dump all the contents of that binary
+file into another text file.
+
+
+Q: Where are the default sar statistics saved?
+
+   /var/log/sa
+
+
+Q: (SAR) How can you check the CPU usage of ALL CPUs?
+
+   # sar -u
+
+
+Q: (SAR) How can you display real time CPU usage every 1 second for 3 times.
+
+   # sar -u 1 3
+
+
+Q: (SAR) How can you display additional fields.
+
+   # sar -u ALL
+   # sar -u ALL 1 3
+
+
+Q: (SAR) How can you display CPU usage for the 10th day of the month
+from the sa10 file.
+
+   # sar -u -f /var/log/sa/sa10
+
+
+Q: (SAR) How can you check the CPU usage of Individual CPU? (Multi-core CPUs)
+
+   # sar -P ALL
+
+
+Q: (SAR) How can you check the context switch per second?
+
+   # sar -w
+   # sar -w 1 3
+   # sar -w -f /var/log/sa/sa10
+
+
+Q: (SAR) How can you check Block Device DISK I/O for all disks?
+
+   # sar -b
+   # sar -b 1 3
+   # sar -b -f /var/log/sa/sa15
+
+
+Q: (SAR) How can you check  Individual DISK Device I/O?
+
+   # sar -d
+   # sar -d 1 3
+   # sar -d -f /var/log/sa/sa10
+
+
+Q: (SAR) How can you check the run queue and LOAD average?
+
+   # sar -q
+   # sar -q 1 3
+   # sar -q -f /var/log/sa/sa10
+
+
+Q: (SAR) How can you check the MEMORY Free and Used?
+
+   # sar -r
+   # sar -r 1 3
+   # sar -r -f /var/log/sa/sa10
+
+
+Q: (SAR) How can you check the network statistics?
+
+   # sar -n DEV 1 1
+
+
+Q: (SAR) How can you check the SWAP Space used?
+
+   # sar -S
+   # sar -S 1 3
+   # sar -S -f /var/log/sa/sa15
+
+
+Q: (SAR) How can you check the system using a start and end time?
+
+   # sar -q -f /var/log/sa/sa17 -s 02:10:01 -e 03:20:01
+
+
+Q: What are the Crontab file contents?
+
+Crontab syntax:
+
+0 - 59 Minute
+0 - 23 Hour
+1 - 31 Day of Month
+1 - 12 Month
+0 - 7   Day of Week
+  COMMAND
+
+
+Q: CRON - How do you run a command every 2 minutes or every 10 minutes.
+
+      /2 for every 2 minutes
+*/2 * * * * root /usr/lib64/sa/sa1 1 1
+
+      /10 for every 10 minutes.
+*/10 * * * * root /usr/lib64/sa/sa1 1 1
+
+
+Q: CRON - How do you run a command at 6:30 PM.
+
+30    18    *    *    *     rm /tmp/*
+
+
+Q: How do you specify an editor to open crontabs?
+
+   # export EDITOR=vi
+
+
+Q: How do you edit crontab file, or create one if it doesn’t already exist?
+
+   # crontab -e
+
+
+Q: How do you get a crontab list of cronjobs or display crontab file contents?
+
+   # crontab -l
+
+
+Q: How do you remove your crontab file?
+
+   # crontab -r
+
+
+Q: How do you display the last time you edited your crontab file?
+
+   # crontab -v
+
+
+Q: What is cron?
+
+cron is a Linux utility that allows tasks to be automatically run in
+the background at regular intervals by the cron daemon.
+
+
+Q: What is crontab?
+
+Crontab (CRON TABle) is a file which contains the schedule of cron
+entries to be run and at specified times.
+
+
+Q: What are Crontab Restrictions?
+
+   You can execute crontab if your name appears in the file
+/usr/lib/cron/cron.allow. If that file does not exist, you can use
+crontab if your name does not appear in the file
+/usr/lib/cron/cron.deny.
+
+   If only cron.deny exists and is empty, all users can use crontab.
+If neither file exists, only the root user can use crontab. The
+allow/deny files consist of one user name per line.
+
+
+Q: How do you disable cron emails from running?
+
+   By default cron jobs sends an email to the user account executing
+the cronjob. If this is not needed put the following command at the
+end of the cron job line .
+
+      >/dev/null 2>&1
+
+Q: How do you generate a cron log file for a user?
+
+   To collect the cron execution execution log in a file :
+
+30 18 * * * rm /home/someuser/tmp/* >> /home/someuser/cronlogs/clean_tmp_dir.log
+
+
+
+
+Q: What are some important configuration files?
+
+Kernel, Logging, Networking, Kernel Parameters, DNS(client&server)
+
+Kernel             - /boot/vmlinuz*
+
+Logging            - /var/log/messages
+
+Networking         - /etc/sysconfig/network & network-scripts/ifcfg-ens33
+
+Kernel Parameters  - /etc/sysctl.conf or /etc/sysctl.d/*
+
+DNS                - /etc/resolv.conf,
+    /etc/named.conf,
+/etc/named/zones/root forward reverse local
+
+
+Q: What is the Rsyslog Server config file?
+
+# vim /etc/rsyslog.conf
+...
+
+   Q: What is the Rsyslog Server port?
+
+$ModLoad imudp
+$UDPServerRun 514
+
+
+   Q: What is the Rsyslog Client config file?
+
+# vim /etc/rsyslog.conf
+...
+*.* @@10.0.0.11:514
+...
+
+
+Q: How do you query DNS?
+
+dig, host, nslookup
+
+
+Q: What are a couple of DNS Resource Records?
+
+SOA
+
+NS
+MX
+
+A AAAA
+CNAME
+PTR
+
+TXT
+
+
+Q: What are a few DNS Country Codes?
+
+au
+co
+de
+eu
+fi
+fr
+tt
+uk
+
+
+Q: What are a few DNS Domains?
+
+arpa
+biz
+com
+edu
+gov
+info
+mil
+net
+org
+tv
+
+
+Q: How do you display network devices information?
+
+# ifconfig -a
+# ip addr show/list
+
+
+Q: How do you display the routing table?
+
+# route
+# ip route show/list
+# netstat -rn
+
+
+Q: How do you display the ARP table?
+
+# arp -a
+# ip neigh show/list
+
+
+Q: How do you clear the ARP table?
+
+# ip -s -s neigh flush all
+      “-s, -stats, -statistics” => Output more information.
+         If the option appears twice or more, the amount of
+information increases.
+# arp -n
+
+
+Q: How do you Delete a KVM VM?
+
+# virsh list
+# virsh shutdown vm1.test.com
+# virsh undefine vm1.test.com
+
+
+Q: How do you Delete/Disable virbr0?
+
+# virsh net-destroy default
+# virsh net-undefine default
+
+
+Q: How do you Delete eth0?
+
+# nmcli connection show
+# nmcli con del "UUID of eth0"
+          OR
+# ip link delete eth0
+
+
+Q: What is the difference between raid 01 and raid 10?
+
+   RAID 0+1 (RAID 01) is “mirror of stripes”.  The disks within the
+groups are striped and the groups are mirrored.
+
+   RAID 1+0 (RAID 10) is a "stripe of mirrors".   The disks within the
+group are mirrored and the groups themselves ar7e striped.
+
+
+   Q: How do you create a RAID?
+
+# mdadm
+ --create /dev/md0
+ --level={linear;stripe;mirror;5;6;10}
+ --raid-disks=6
+ /dev/sda /dev/sdb /dev/sdc /dev/sdd /dev/sde /dev/sdf
+
+
+   Q: How do you show details of RAID?
+
+# mdadm --detail /dev/md0
+
+
+   Q: How do you replace a failed disk?
+
+     +++Add a spare
+#mdadm /dev/md0 -a /dev/sdb
+
+
+Q: What is a Dentry?
+
+A data structure used to represent a Directory.
+
+
+Q: What is an INODE?
+
+    inode - a data structure used to represent a filesystem object,
+which can be one of various things including a file or a directory.
+
+
+Q: What information is contained in an Inode?
+
+   owner type size
+   group permissions dates
+   pointers to data
+
+
+Q: What are the dates in an inode?
+
+
+Access: last time the contents of the file were examined.
+Modify: Last time the contents of the file were changed.
+Change: Last time the file's inode was changed.
+
+The change time includes things like modifying the permissions and
+ownership, while the modify time refers specifically to the files
+contents.
+
+
+Q: What command/system call can you use to get Inode information?
+
+   stat: Getting inode information
+
+   stat() is a Unix system call that returns useful data about a file inode.
+
+   Example:
+# stat /tmp/test123.txt
+File: `/tmp/test123.txt'
+Size: 23              Blocks: 8          IO Block: 4096   regular file
+Device: fd02h/64770d    Inode: 17          Links: 1
+Access: (0644/-rw-r--r--)  Uid: (  500/ user1)   Gid: (  501/   ossec)
+Access: 2011-01-21 12:56:05.000000000 -0500
+Modify: 2011-01-21 06:36:01.000000000 -0500
+Change: 2011-01-21 06:36:01.000000000 -0500
+
+
+Q: How do you get the long listing of a file?
+
+# ls -l | grep test123.txt
+-rw-r--r-- 1 user1  ossec        23 Jan 21 06:36 test123.txt
+
+
+Q: How do you get the inode number of a file?
+
+# ls -i | grep test123.txt
+17 test123.txt
+
+
+Q: What are the process states in Unix?
+
+Running : The process is either running or it is ready to run.
+
+Waiting : The process is waiting for an event or for a resource.
+
+Stopped : The process has been stopped, usually by receiving a signal.
+
+Zombie : The process is dead but have not been removed from the process table.
+
+
+Q: What are the process states in Unix via the ps aux|-elf BSD Format?
+
+D uninterruptible sleep (usually IO)
+R running or runnable (on run queue)
+S interruptible sleep (waiting for an event to complete)
+T stopped, either by a job control signal or because it is being traced
+W paging (not valid since the 2.6.xx kernel)
+X dead (should never be seen)
+Z defunct ("zombie") process, terminated but not reaped by its parent
+
+
+Q: What is a Zombie process?
+
+   Zombie = When a program forks and the child finishes before the
+parent, the kernel still keeps some of its information about the child
+in case the parent might need it - for example, the parent may need to
+check the child's exit status. To be able to get this information, the
+parent calls `wait()'; In the interval between the child terminating
+and the parent calling `wait()', the child is said to be a `zombie'.
+
+(If you do `ps', the child will have a `Z' in its status field to
+indicate this.)
+
+Finding Zombies => ps aux | grep -w Z
+
+
+Q: How can you create and test for a Zombie process?
+
+# vim zombie.c
++++
+#include <stdlib.h>
+#include <sys/types.h>
+#include <unistd.h>
+
+int main ()
+{
+  pid_t child_pid;
+
+  child_pid = fork ();
+  if (child_pid > 0) {
+    sleep (60);
+  }
+  else {
+    exit (0);
+  }
+  return 0;
+}
++++
+
+# cc zombie.c -o zombie
+
+# ./zombie
+
+# ps aux | grep -w Z
+root      9662  0.0  0.0      0     0 pts/0    Z+   21:29   0:00
+[zombie] <defunct>
+
+
+Q: What is a Orphan process?
+
+   Orphan = An orphan process is a computer process whose parent
+process has finished or terminated, though itself remains running.
+
+In a Unix-like operating system any orphaned process will be
+immediately adopted by the special init system process. This operation
+is called re-parenting and occurs automatically. Even though
+technically the process has the "init" process as its parent, it is
+still called an orphan process since the process that originally
+created it no longer exists.
+
+
+Q: How do you find Orphan process?
+
+# ps -elf | awk '{if ($5 == 1){print $4" "$5" "$15}}'
+
+
+Q: What does the “cksum” command do?
+
+cksum - checksum and count the bytes in a file
+
+
+Q: How many bytes, kilobytes & megabytes in...
+-r-r--r-- 1 root root 3006000 Dec 21 19:22 data.txt-compress-level-1.bz2
+
+3006000B    Bytes
+~3006K      Kilobytes
+~3M         Megabytes
+
+
+
+Q: How do you view a bzipped file?
+
+bzcat - decompresses files to stdout
+
+
+Q: How do you bzip file & unzip it?
+
+bzip2, bunzip2 - a block-sorting file compressor
+
+
+Q: What are UNIX System calls for a File?
+
+   • System calls for low level file I/O:
+create
+open
+close
+read
+write
+lseek
+unlink
+
+
+Q: What are UNIX System calls for a process?
+
+   • System Calls for process control
+exec
+fork
+wait
+exit
+signal
+kill
+
+
+Q: What are UNIX System calls for IPC?
+
+   • System Calls for IPC
+dup
+pipe
+
+
+Q: What are UNIX System calls for Networking?
+
+   • Networking/Socket System calls:
+socket
+bind
+listen
+accept
+connect
+shutdown
+close
+send
+receive
+
+
+• * Socket - The socket system call creates a new socket by assigning
+a new descriptor.
+
+• * Bind - The bind system call associates a local network transport
+address with a socket
+
+• * Listen - This call indicates that the server process is ready to
+accept any new incoming connections
+
+• * Accept - The accept system call is a blocking call that waits for
+incoming connections.
+
+• * Connect - The connect system call is normally called by the client
+process to connect to the server process.
+
+• * Shutdown - The shutdown system call closes either one or both ends
+of the connection.
+
+• * Close - The close system call closes or aborts any pending
+connections on the socket.
+
+• * Send - There are four system calls to send data on the n/w
+interface: write, writev, sendto, and sendmsg.
+
+• * Receive - There are 4 system calls that can be used to receive
+data from a connection: read, readv, recvfrom, and recvmsg.
+
+
+Q: What are a few UNIX Signals?
+
+1  Hangup
+2  Interupt
+3  Quit
+9  Kill
+15 Soft Term
+
+
+Q: What are a few Built-in Shell Variables?
+
+$0  command name
+$n  nth command line argument
+
+$#  number of command line arguments
+
+$*  all of the command line arguments
+$@  all of the command line arguments in iterable list
+
+$$  pid of current running process
+$!  pid of last run background command
+
+$?  exit code of last command run
+
+
+ Q: What are a few "SHELL CONDITIONAL EXPRESSIONS"?
+
+-a file
+True if file exists.
+
+-b file
+True if file exists and is a block special file.
+
+-c file
+True if file exists and is a character special file.
+
+-d file
+True if file exists and is a directory.
+
+-e file
+True if file exists.
+
+-f file
+True if file exists and is a regular file.
+
+-g file
+True if file exists and is set-group-id.
+
+-h file {also –L}
+True if file exists and is a symbolic link.
+
+-k file
+True if file exists and its "sticky" bit is set.
+
+-p file
+True if file exists and is a named pipe (FIFO).
+
+-r file
+True if file exists and is readable.
+
+-s file
+True if file exists and has a size greater than zero.
+
+-t fd
+True if file descriptor fd is open and refers to a terminal.
+
+-u file
+True if file exists and its set-user-id bit is set.
+
+-w file
+True if file exists and is writable.
+
+-x file
+True if file exists and is executable.
+
+-O file
+True if file exists and is owned by the effective user id.
+
+-G file
+True if file exists and is owned by the effective group id.
+
+-S file
+True if file exists and is a socket.
+
+
+! EXPRESSION
+The EXPRESSION is false.
+
+-n STRING
+The length of STRING is greater than zero.
+
+-z STRING
+The length of STRING is zero.
+
+STRING1 = STRING2
+STRING1 is equal to STRING2
+
+STRING1 != STRING2
+STRING1 is not equal to STRING2
+
+INTEGER1 -eq INTEGER2
+INTEGER1 is numerically equal to INTEGER2
+
+INTEGER1 -gt INTEGER2
+INTEGER1 is numerically greater than INTEGER2
+
+INTEGER1 -lt INTEGER2
+INTEGER1 is numerically less than INTEGER2
+
+
+
+Q: What is a script that can check for the existence of the messages file?
+
+   Sample Script:
+# vim file_check.sh
++++
+#!/bin/bash
+
+echo "This script checks the existence of a file."
+sleep 1
+
+echo "Checking..."
+sleep 1
+
+if [ -f $1 ]
+  then
+    echo "File $1 exists."
+else
+  echo "File $1 does not exist."
+fi
+
+echo
+sleep 1
+
+echo "...done."
++++
+
+Running:
+# bash file_check.sh /var/log/messages
+This script checks the existence of a file.
+Checking...
+File /var/log/messages exists.
+
+...done.
+
+# bash file_check.sh /var/log/nofile
+This script checks the existence of a file.
+Checking...
+File /var/log/nofile does not exist.
+
+...done.
+
+
+Q: How do you query a package that has NOT been installed yet?
+
+   To query a package that has NOT been installed yet, add the
+   -p
+
+For example, rpm -ql package would become
+# rpm -qpl package.
+
+
+Q: How do you query package names using wildcards?
+
+# rpm -qa | grep pattern
+# yum list | grep pattern
+
+
+Q: How do you find out what files are included in the package?
+
+# rpm -ql package
+
+
+Q: How do you find out what are the config files in a package?
+
+# rpm -qc package
+
+
+Q: How do you find what are the documentation files in a package?
+
+# rpm -qd package
+
+
+Q: How do you show general info on a package?
+
+# rpm -qi package
+# yum info package
+
+
+Q: How do you find out what package owns this file?
+
+# rpm -qf path/to/file
+# yum provides path/to/file
+
+
+Q: How do you find out what are the scripts in a package?
+
+# rpm -q --scripts package
+
+
+Q: How do you find out what services does this package provide?
+
+# rpm -q --provides package
+
+
+Q: How do you find out what services does this package require?
+
+# rpm -q --requires package
+
+
+Q: How do you clean up yum’s cache, packages, headers, metadata,
+dbcache, rpmdb & plugins?
+
+# yum clean all
+
+
+Q: How do you list YUM Repos?
+
+# yum repolist
+
+
+Q: How do you YUM Download RPMs without installing them?
+
+# yum -y install --downloadonly --downloaddir=/data/rpms glibc glibc2 libgcc
+
+       OR
+
+# yumdownloader --resolve --downloadonly --downloaddir=/data/rpms
+glibc glibc2 libgcc
+
+
+Q: How do you Install a the EPEL Repo?
+
+# yum install epel-release
+
+       OR
+
+# yum -Uvh http://"EPEL"
+
+
+Q: How do you install a downloaded RPM via YUM.
+
+# yum localinstall /path/to/kmod-compat-wireless.rpm
+
+
+Q: How do you perform a group install?
+
+# yum group install "KDE Desktop"
+
+# yum group install kde-desktop
+
+# yum install @"KDE Desktop"
+
+# yum install @kde-desktop
+
+
+Q: How do you perform a group removal?
+
+# yum group remove "KDE Desktop"
+
+# yum group remove kde-desktop
+
+# yum remove @"KDE Desktop"
+
+# yum remove @kde-desktop
+
+
+Q: What are the Runlevels?
+
+0: Halt System (To shutdown the system)
+1: Single user mode
+2: Basic multi user mode without NFS
+3: Full multi user mode (text based)
+4: unused
+5: Multi user mode with Graphical User Interface
+6: Reboot System
+
+
+Q: What is /etc/inittab used for?
+
+   Set the default run level.
+
+# vi /etc/inittab (id:5:initdefault:)
+
+
+Q: How do you show what run level you are on?
+
+# who -r
+
+
+Q: How do you reboot a server?
+
+# init 6
+# shutdown -r
+# reboot
+
+
+Q: What are some Port Numbers?
+
+20/21
+
+ FTP (Data/Control)
+
+22
+
+ SSH
+
+23
+
+ TELNET
+
+25
+
+ SMTP
+
+53
+
+ DNS
+
+67/68
+
+ DHCP Server 67
+ DHCP Client 68
+
+69
+
+ TFTP
+
+80
+
+ HTTP
+
+88
+
+ Kerberos
+
+110
+
+ POP3
+
+119
+
+ NNTP
+
+123
+
+  NTP
+
+143
+
+ IMAP4
+
+161
+
+ SNMP
+
+162
+
+ SNMPTRAP
+
+389
+
+ LDAP
+
+443
+
+ HTTPS
+
+465
+
+secure SMTP
+
+514
+
+ SYSLOG
+
+636
+
+ LDAPS
+
+993
+
+IMAP over SSL
+
+995
+
+  Secure POP3
+
+2379
+
+  Kubernetes etcd
+
+3128
+
+ SQUID
+
+8140
+
+ PUPPET
+
+11211
+
+   Memcached
+
+27017
+
+  MongoDB
+
+3306
+
+  MySQL/MariaDB
+
+6379
+
+  REDIS
+
+
+Q: How do you create an SSL Tunnel?
+
+# ssh -L 8888:smf1-afk-15-sr4.prod.tw.com:31567 nest1.corp.twitter.com -N
+
+  Then go to the website …
+    Ex: http://127.0.0.1:8888/
+
+   OR
+
+Socket Secure (SOCKS)
+
+# ssh -D 8080 user1@nest1.corp.twitter.com
+
+Network => Advanced => SOCKS Proxy => 127.0.0.1:8080
+
+  Then go to the website …
+    Ex: http://smf1-afk-15-sr4.prod.tw.com:31567/
+
+
+Q: What are the Private Address Spaces
+
+     10.0.0.0        -   10.255.255.255  (10/8  prefix)
+
+     172.16.0.0      -   172.31.255.255  (172.16/12 prefix)
+
+     192.168.0.0     -   192.168.255.255 (192.168/16 prefix)
+
+
+Q: What are the Network Number Address Ranges?
+
+A = 1   – 126 N.H.H.H     16,777,216 addresses
+L = 127
+B = 128 – 191 N.N.H.H         65,536 addresses
+C = 192 – 223 N.N.N.H            255 addresses
+D = 224 – 239 Reserved for Multicasting
+E = 240 - 254 Experimental; Used for research
+
+
+Q: Where is the user-specific SSH configuration information stored?
+
+In the user's home directory within the ~/.ssh/ directory
+
+
+Q: What are the Private/Public Keys for RSA V1?
+
+identity
+identity.pub
+
+Q: What are the Private/Public Keys for RSA V2?
+
+id_rsa
+id_rsa.pub
+
+
+Q: What are the Private/Public Keys for DSA?
+
+id_dsa
+id_dsa.pub
+
+
+Q: What file holds a list of authorized public keys for servers?
+
+ ~/.ssh/authorized_keys
+
+
+Q: How does the ssh process work with keys?
+
+When the client connects to a server, the server authenticates the
+client by checking its signed public key stored within the
+authorized_keys file.
+
+
+Q: How can you better secure Public Keys?
+
+Move authorized_keys to /etc/ssh/publickeys/ and create a symbolic
+link from users directory to here.
+
+
+Q: What file contains DSA host keys of SSH servers?
+
+~/.ssh/known_hosts
+
+
+Q: What is the known_hosts file used for?
+
+This file is for ensuring that the SSH client is connecting the
+correct SSH server.
+
+
+Q: What happens if the server's host key changes?
+
+If an SSH server's host key has changed, the client notifies the user
+that the connection cannot proceed until the server's host key is
+deleted from the known_hosts file.
+
+
+Q: How do you generate a DSA Private/Public key?
+
+#  ssh-keygen -t dsa
+
+
+Q: How do you sync filesystems?
+
+Use rsync.
+# rsync [OPTIONS] [SRC] [DEST]
+-v : verbose
+-r : copies data recursively (don’t preserve inode data)
+-a : archive mode: copy files recursively, preserve inode data.
+-z : compress file data
+-h : human-readable, output numbers in a human-readable format
+-e : specify the remote shell to use
+--bwlimit=KBPS          limit I/O bandwidth; KBytes per second
+
+# rsync -zvh backup.tar /tmp/backups/
+# rsync -avzh /root/rpmpkgs /tmp/backups/
+# rsync -avz rpmpkgs/ root@192.168.0.101:/home/
+# rsync -avzh root@192.168.0.100:/home/rgriffith/rpmpkgs /tmp/myrpms
+# rsync -avzhe ssh root@192.168.0.100:/root/install.log /tmp/
+# rsync -avzhe ssh backup.tar root@192.168.0.100:/backups/
+# rsync -avzhe ssh --progress /home/rpmpkgs root@192.168.0.100:/root/rpmpkgs
+# rsync -avze ssh --include 'R*' --exclude '*'
+root@192.168.0.101:/var/lib/rpm/ /root/rpm
+# rsync -avzhe ssh --max-size='200k' /var/lib/rpm/
+root@192.168.0.100:/root/tmprpm
+# rsync --bwlimit=100 -avzhe ssh  /var/lib/rpm/
+root@192.168.0.100:/root/tmprpm/
+
+   *** CAREFUL***   Deletes files on target if not on source.
+# rsync -avz --delete root@192.168.0.100:/var/lib/rpm/ .
+   *** CAREFUL***   Deletes files on target if not on source.
+
+   *** CAREFUL***   Deletes source files.
+# rsync --remove-source-files -zvh backup.tar /tmp/backups/
+   *** CAREFUL***   Deletes source files.
+
+
+Q: What is the difference between a logical link and hard link?
+
+inode & across filesystems.
+
+- Hard Link: link to physical file
+   More than one filename reference the same inode number.
+   Hard links must reside on the same filesystem as the real/source file.
+   The real/source file must exist.
+
+- Soft Link: link to path
+   Special file (with unique inode) is created that points to real/source file.
+   Special file is called 'soft link' or a 'symbolic link' (aka a 'symlink').
+   Soft links can reside on separate filesystems than the real/source file.
+   The real/source file does not have to exist.
+   Additional I/O necessary to complete file access.
+   Additional storage taken up by Soft Link's file data.
+
+
+Q: What is od?
+
+octal dump
+
+
+Q: What is tr?
+
+translate or delete characters
+
+Example: # tr -d '\177' <file
+
+
+Q: What tools can you use to clean up files with bad/mystery characters in it?
+
+dos2unix, cat -v, od -c
+
+od -c : prints out all regular characters in ASCII.
+
+null         \0
+backspace    \b
+form-feed    \f
+new-line     \n
+return       \r
+tab          \t
+
+- if od doesn't recognize a regular ASCII character, it will dump the
+octal value.  See Example 4.
+
+
+   Example 1: "cat -v"
+   ----------
+host # cat file
+def
+host # cat -v file
+abc^Mdef
+
+
+   Example 2: "od -c"
+   ----------
+host # od -c file
+0000000 a b c \r d e f \n
+0000010
+
+       Note:
+       -----
+       - With the "-c" flag used, the "^M" character shows up as "\r".
+       - The byte-offset is also off ... it should be 7 instead of 10
+like the below example.
+
+    Example 3: "cat", "cat -v" & "od -c" with no funny characters.
+   ----------
+host # cat file
+abcdef
+
+host # cat -v file
+abcdef
+
+host # od -c file
+0000000 a b c d e f \n
+0000007
+
+
+    Example 4: od does not recognize and can not translate ASCII character.
+   ----------
+host # cat file
+bcdef
+
+host # cat -v file
+a^?bcdef
+
+host # od -c file
+0000000 a 177 b c d e f \n
+0000010
+
+
+    Example 4: Solution.
+   ----------
+host # cat file
+bcdef
+
+host # cat -v file
+a^?bcdef
+
+host # od -c file
+0000000 a 177 b c d e f \n
+0000010
+
+host # tr -d '\177' <file
+abcdef
+
+host # tr -d '\177' <file >file2 <--- Where the magic happens...
+host # cat file2
+abcdef
+
+host # cat -v file2
+abcdef
+
+host # od -c file2
+0000000 a b c d e f \n
+0000007
+
+
+
+Q: How can you create files 1-9 and a-g quickly?
+
+# for i in {a..g}; do touch $i; done
+# for i in {1..9}; do touch $i; done
+
+
+Q: How can you match any string of zero or more characters?
+
+*
+
+
+Q: How can you match 0 or 1 single character?
+
+?
+
+
+Q: How can you match a set of characters?
+
+# ls -l [af37]
+# ls -l [3-8]
+# ls -l [a-c]
+
+
+Q: How can you match characters not in a set?
+
+# ls -l [^af37]
+# ls -l [!af37]
+
+
+Q: How can you go to the home directory of the current user?
+
+# cd ~
+
+
+Q: How can you go to the home directory of a specific user?
+
+# cd ~username
+
+
+Q: How can you redirect all output of several commands "date", "who" &
+"pwd" to a logfile?
+
+# (date; who; pwd) > logfile
+
+
+Q: How can you execute commands sequentially?
+
+# cd; ls
+
+
+Q: What is /dev/null?
+
+A special filesystem object that throws away everything written into it.
+
+
+Q: What are the redirection forms?
+
+File        Name            Common abbreviation    Typical default
+Descriptor
+
+0            Standard input        stdin            Keyboard
+1            Standard output       stdout            Screen
+2            Standard error        stderr            Screen
+
+
+Q: What is 2>&1?
+
+Redirect Standard Error to Standard Output.
+
+
+Q: How can you send standard error to file but have standard output remain
+the same to the screen?
+
+# cmd 2>file
+
+
+Q: How can you send both standard error and standard output to file?
+
+# cmd > file 2>&1
+
+
+Q: How can you send standard output to file f1, standard error to file f2?
+
+# cmd > f1 2>f2
+
+
+Q: How can you send output of cmd to standard output (terminal) and to files?
+
+# cmd | tee files
+
+
+Q: How can you send standard output and standard error of cmd to
+standard output (terminal) and to files?
+
+# cmd 2>&1 | tee files
+
+
+Q: What is tee?
+
+Send output to Screen & File.
+
+Example:
+# ls -1 *.txt | wc -l | tee count.txt
+
+Explanation:
+In the above example, the ls command lists all files in the current
+directory that have the filename extension .txt, one file per line;
+this output is piped to wc, which counts the lines and outputs the
+number; this output is piped to tee, which writes the output to the
+terminal, and writes the same information to the file count.txt. If
+count.txt already exists, it is overwritten.
+
+
+Q: How do you get the nice value of a process?
+
+# ps -o pid,comm,nice -p 14374
+  PID     COMMAND        NI
+14374   firefox                0
+
+
+Q: How do you update the nice value of a process?
+
+# renice -20 -p 14374
+14374 (process ID) old priority, new priority -20
+
+   Confirmation.
+# ps -o pid,comm,nice -p 14374
+  PID     COMMAND        NI
+14374   firefox                -20
+
+
+Q: What is SED?
+
+stream editor
+
+
+Q: How can you replace all instances of rgriffith with Robert Griffith
+in a file using SED?
+
+# cat file | sed 's/rgriffith/Robert Griffith/g'
+
+
+Q: How can you do the above modifying the file in place?
+
+# sed -i 's/rgriffith/Robert Griffith/g' file
+
+
+Q: How can you do the above modifying the file in place with a backup file?
+
+# sed -i.bak 's/rgriffith/Robert Griffith/g' file
+
+
+Q: What is awk and what is the abbreviation of?
+
+Text processing tool for data extraction and reporting.
+
+Abbreviation is last names of authors:
+Alfred Aho
+Peter Weinberger
+Brian Kernighan
+
+
+Q: How can you, using awk, display the username and fullname of a
+specific user in /etc/passwd?
+
+# cat /etc/passwd | grep rgriffith | awk -F":" '{print $1, "\t", $5}'
+rgriffith Robert Griffith
+
+
+Q: What is the boot process?
+
+POST
+BIOS
+MBR
+GRUB/LILO
+KERNEL
+INIT/TARGETS  (legacy => SysVinit) (Upstart {/etc/event.d/})
+RUNLEVEL
+
+
+Q: What is LILO?
+
+Linux Loader
+
+
+Q: What is GRUB?
+
+GRand Unified Bootloader
+
+
+Q: Name some CentOS 7 differences:
+
+Uses systemd rather than upstart or SysV.
+ - systemctl
+ - hostnamectl
+ - timedatectl
+
+Boot Process is different.
+
+TARGETS: default graphical multi-user basic sysinit local-fs
+KERNEL
+GRUB/LILO
+MBR
+BIOS
+POST
+
+
+Q: What are some systemd TARGETS?
+
+TARGETS: default graphical multi-user basic sysinit local-fs
+
+SysV Runlevel          systemd Target
+0                               runlevel0.target, poweroff.target
+1, s, single                runlevel1.target, rescue.target
+2, 4                           runlevel2.target, runlevel4.target,
+multi-user.target
+3                               runlevel3.target, multi-user.target
+5                               runlevel5.target, graphical.target
+6                               runlevel6.target, reboot.target
+emergency               emergency.target
+
+
+Q: Where are the systemd target files located?
+
+/usr/lib/systemd/system
+
+
+Q: How do you mount a filesystem?
+
+# mount  "real"  "fake"
+# mount  /dev/hda2  /mnt
+
+
+Q: In VIM, how do you change the shiftwidth setting?
+
+:set shiftwidth=2
+
+
+Q: In VIM, how do you shift 3 lines of code to the right?
+
+3>>
+
+
+Q: How do you list one file per line in a directory?
+
+# ls -1
+
+
+Q: Describe XOR?
+
+0   0   0
+0   1   1
+1   0   1
+1   1   0
+
+
+Q: Why should you have regular/weekly server reboots?
+
+   - Potential Memory Leaks.
+   - Security.
+
+
+Q: What is a Memory Leak?
+
+   It is a type of resource leak that occurs when a computer program
+incorrectly manages memory allocations. In such a way that memory
+which is no longer needed is not released. In object-oriented
+programming, a memory leak may happen when an object is stored in
+memory but cannot be accessed by the running code.  A memory leak has
+symptoms similar to a number of other problems and generally can only
+be diagnosed by a programmer with access to the program's source code.
+
+
+Q: What is the benefit of using the Python logging module?
+
+The ability to create new handlers with higher- or lower-severity
+filters can be very helpful when writing and testing an application.
+Instead of using many print statements for debugging, use
+logger.debug: Unlike the print statements, which you will have to
+delete or comment out later, the logger.debug statements can remain
+intact in the source code and remain dormant until you need them
+again. At that time, the only change that needs to happen is to modify
+the severity level of the logger and/or handler to debug.
+
+
+Q: What are the advanced Python logging components?
+
+Logger
+Handler
+Formater
+Filter
+
+
+Q: What are Python's logging config options?
+
+logging.basicConfig(format='%(asctime)s:%(levelname)s:%(module)s:%(funcName)s:%(message)s’,
+                    filename='example.log',
+                    filemode='w',
+                    datefmt='%m/%d/%Y %I:%M:%S %p’,
+                    level=logging.DEBUG)
+
+
+Q: Where can you write Python log messages to?
+
+console,
+files,
+email via SMTP,
+HTTP GET/POST locations,
+generic sockets,
+OS-specific logging mechanisms such as syslog
+
+
+Q: What can you gain by implementing Network Bonding?
+
+  Fault Tolerance (Redundancy)
+  Increased Throughput (Speed)
+  Load Balancing
+
+
+Q: What are the Network Bonding Modes?
+
+   0 - Round Robin
+   1 - Active Backup
+   2 - Exclusive OR (XOR)
+   3 - Broadcast
+   4 - LACP
+   5 - TLB
+   6 - ALB
+
+
+Q: What are some Network Bonding options?
+
+   mode=[0-6]
+   primary=eth0
+   miimon=100
+   downdelay=500
+   updelay=500
+   xmit-hash-policy=layer2
+
+
+Q: What are the fields of /etc/passwd?
+
+username
+password
+uid
+gid
+comment
+homedir
+shell
+
+
+Q: What are the fields of /etc/shadow?
+
+username
+password
+last changed (since Epoch)
+min password change. 0 => anytime
+max password change. 9999 => keep for years
+warn of expiring password
+inactive . . . disable. (days after expire)
+days disabled. (since Epoch)
+A reserved field for possible future use
+
+
+Q: How do you view password details of a user?
+
+# chage -l jsmith
+
+Last password change : Feb 15, 2012
+Password expires : never
+Password inactive : never
+Account expires : never
+Minimum number of days between password change : 0
+Maximum number of days between password change : 99999
+Number of days of warning before password expires : 7
+
+chage username
+
+
+   Q: How do you change the …
+explicit expiration date
+
+  (-E) to 01/31/2012,
+
+minimum password age
+
+  (-m) of 5 days,
+
+maximum password age
+
+  (-M) of 90 days,
+
+inactivity period
+
+  (-I) of 5 days after password expiration,
+
+and a warning time period
+
+  (-W) of 14 days before password expiration.
+
+sudo chage -E 01/31/2012 -m 5 -M 90 -I 30 -W 14 username
+
+
+Q: What are a few Apache modules?
+
+mod_so
+
+mod_auth_digest
+mod_authz_owner
+mod_authz_user
+mod_authz_groupfile
+mod_authz_host
+mod_authz_svn
+mod_cgi
+mod_dav
+mod_dav_fs
+mod_dav_svn
+mod_dontdothat
+mod_gnutls
+mod_imagemap
+mod_info
+mod_(ldap,memcached,mongo,dbd,redis)
+mod_mime
+mod_(python,perl,php)
+mod_sed
+mod_ssl
+mod_status
+
+
+Q: What is Apache’s DocumentRoot?
+
+/var/www/html
+
+
+Q: Where are the Apache modules located?
+
+/etc/httpd/modules
+
+
+Q: What are three examples of Apache Static content?
+
+HTML files, Image files, CSS files
+
+
+Q: How do you use watch?
+
+# watch -n 1 uptime
+
+# watch -n 1 "ls -l"
+
+
+Q: What is swatch?
+
+Watches your logs and watches them for regular expressions that you
+configure. Swatch will notify you via mail or the console screen
+(stdout) when it matches the configured log file entries with your
+watchfor directives.
+
+# vim /etc/swatch.conf
++++
+watchfor /success|accepted|rgriffith/
+         echo
+         write robrg
+         mail addresses=robrg\@localhost, subject=Successful Activity
++++
+
+# /usr/bin/swatch --daemon --config-file=/etc/swatch.conf
+--tail-file=/var/log/messages --pid-file=/var/run/swatch.pid
+
+### NOTE: The above will watch /var/log/messages for messages
+containing “success or accepted or rgriffith”.  If found, it will
+email robrg the message.
+
+
+Q: /etc/profile
+        umask 022
+        ulimit 8192
+
+
+Q:  What is set in /etc/security/limits.conf?
+
+#        - core - limits the core file size (KB)
+#        - cpu - max CPU time (MIN)
+#        - data - max data size (KB)
+#        - fsize - maximum filesize (KB)
+#        - maxlogins - max number of logins for this user
+#        - maxsyslogins - max number of logins on the system
+#        - nice - max nice priority allowed to raise to values: [-20, 19]
+#        - nofile - max number of open file descriptors
+#        - nproc - max number of processes
+
+#        - as - address space limit (KB)
+#        - priority - the priority to run user process with
+#        - locks - max number of file locks the user can hold
+#        - sigpending - max number of pending signals
+#        - msgqueue - max memory used by POSIX message queues (bytes)
+#        - rss - max resident set size (KB)
+#        - stack - max stack size (KB)
+#        - memlock - max locked-in-memory address space (KB)
+#        - rtprio - max realtime priority
+
++++
+* soft nofile 8192
+* hard nofile 8192
+
+
+Q: Write a pre-commit hook.
+
+
+#!/bin/sh
+files=$(git diff –cached –name-only –diff-filter=ACM | grep ‘.go$’)
+if [ -z files ]; then
+exit 0
+fi
+unfmtd=$(gofmt -l $files)
+if [ -z unfmtd ]; then
+exit 0
+fi
+echo “Some .go files are not fmt’d”
+exit 1
+
+
+Q: How can you tell what kind of system you are on … System V, Upstart, Systemd?
+
+/usr/lib/systemd tells you you're on a systemd based system.
+
+/usr/share/upstart is a pretty good indicator that you're on an
+Upstart-based system.
+
+/etc/init.d tells you the box has SysV init in its history
+
+$ /sbin/init --version init (upstart 0.6.5)
+
+
+Q: What are the Upstart job states?
+
+waiting: the initial state of processing
+
+starting: where a job is about to start
+
+pre-start: where the pre-start section is loaded
+
+spawned: where a script section is about to run
+
+post-start: where post-start operations take place
+
+running: where the job is fully operational
+
+pre-stop: where pre-stop operations take place
+
+stopping: where the job is being stopped
+
+killed: where the job is stopped
+
+post-stop: where post-stop operations take place - to clean up
+
+
+Q: Where are the Upstart logs located?
+
+   /var/log/upstart/
+
+
+Q: How do you change the Upstart log-priority?
+
+   # initctl log-priority debug
+
+
+Q: What are the Upstart event states?
+
+   starting ... started
+   stopping ... stopped
+
+
+Q: What are some Firewall defenses one can put in place for commom
+network/web attacks?
+
+   null attack
+   syn-flood attack
+
+
+Q: How do you rename files from us.data to un.data?
+
+for i in *.data;
+do a="$(echo $i | sed s/us/un/)";
+mv "$i" "$a";
+done
+
+
+Q: How do you insert text at the front of filenames?
+
+   for i in `ls`; do a=calmem1-"$i"; mv "$i" "$a"; done
+
+
+Q: How do you remove whitespace from filenames?
+
+   # for i in *; do a="${i// /_}";  mv "$i" "$a"; done
+
+NOTE:
+*\ * selects all files with a space in their name as input for the the for loop.
+
+The quotes around "$f" are important because we know there's a space
+in the filename and otherwise it would appear as 2+ arguments to mv.
+
+In ${i// /_}:
+  The double slashes // are for replacing all occurrences of space
+with _, if you put one slash  /, only first space is going to be
+replaced.
+  The space is there because you are replacing space (with underscore)
+      ${parameter//find/replace}
+
+
+
+Q: How do you replace _-_ in filenames?
+
+   # for i in *; do a="${i//_-_/_}";  mv "$i" "$a"; done
+
+
+Replication:
+
+Q: Replication is done on a ... if it is not encrypted with TLS/SSL.
+
+ Trusted Private Network
+
+
+Q: How do you replicate SVN servers?
+
+svnsync
+
+
+Q: How do you replicate LDAP servers?
+
+syncrepl
+
+
+Q: What is a NIC?
+
+   Network Interface Controller
+
+
+Q: What is Unix time?
+
+   (also known as POSIX time or Epoch time) is a system for describing
+instants in time, defined as the number of seconds that have elapsed
+since 00:00:00 Coordinated Universal Time (UTC), Thursday, 1 January
+1970, [note 1] not counting leap seconds.
+
+
+Q: Who created C?
+
+   Dennis Ritchie
+
+
+Q: Who created UNIX?
+
+                  Dennis Ritchie
+                  Ken Thompson
+
+
+Q: Who created LINUX?
+
+                 Linus Torvalds
+
+
+Q: Who created PYTHON?
+
+                 Guido van Rossum
+
+
+Q: Who created PERL?
+
+                 Larry Wall
+
+
+Q: Who created BASH?
+
+              Steve Bourne
+
+
+Q: Name a few File formats?
+
+     html  . . .  json, xml, yaml
+
+
+Q: What is the LINUX mascot?
+
+   Tux - Penguin mascot
+
+
+Q: What is the difference between UNIX & LINUX?
+
+   UNIX - propriety
+   LINUX - non-propriety
+
+
+Q: How do you Open CMD Prompt?
+
+   Ctrl-Alt-F1
+
+
+Q: How much should Swap Space be?
+
+    2 X Memory up o 4GB
+
+
+Q: How can you reboot a machine?
+
+   Ctrl-Alt-Del
+
+
+Q: What is a Parallel port?
+
+   Where devices such as Printers are connected:
+     - /dev/lp..lp0..lp1..lp2..lp3
+
+
+Q: What are device names for Floppy Drives?
+
+   /dev/fd0..fd1
+
+
+Q: What are device names for Hard Drives?
+
+    /dev/hda..hdb
+
+
+Q: What are device names for IDE/EIDE hard drives Partitions?
+
+/dev/hda1..hda2..hda3
+
+
+Q: What are device names for Serial Ports?
+
+   /dev/ttyS0 ... ttyS7
+   Windows SPs COM1 ... COM8
+
+
+Q: How do you change file permissions?
+
+# chmod u+x file
+
+   u (user), g (group), o (others),
+   a (all),
+   r (read), w (write) and x (exec)
+
+   4 (read), 2 (write) and 1 (exec)
+   1000 Sticky Bit  rwxrwxrwt
+   2000 SetGid Bit  rwxrwsrwx
+   4000 SetUid Bit  rwsrwxrwx
+
+
+Q: What is the Max Filename Length?
+
+    255 characters.
+
+
+Q: What are Daemons?
+
+   Services that wait for & process requests.
+
+
+Q: What are the modes of vim?
+
+   CMD, EDIT & EX mode
+
+
+Q: How do you free pagecache?
+
+echo 1 > /proc/sys/vm/drop_caches
+
+
+Q: How do you free dentries & inodes
+
+echo 2 > /proc/sys/vm/drop_caches
+
+
+Q: How do you free pagecache, dentries & inodes
+
+echo 3 > /proc/sys/vm/drop_caches
+
+
+Q: What is the XEN/OVM architecture made up of?
+
+***Hypervisor***
+  VMM/host/DOM 0
+  VMs/guest/DOM 1...
+
+
+Q: What is Paravirtualization?
+
+   Virtualization in which the guest operating system (the one being
+virtualized) is aware that it is a guest and accordingly has drivers
+that, instead of issuing hardware commands, simply issue commands
+directly to the host operating system.
+
+
+Q: dump/restore, tar, cpio, rsync
+

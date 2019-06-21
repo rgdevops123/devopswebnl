@@ -1,0 +1,1100 @@
+What is Python?  State some programming language features of Python.
+
+- Built-in Data Structures
+- Built-in Modules
+- embeddable into C programs 
+- extendable with C modules
+- free & open source
+- interactive
+- interpreted 
+- object oriented 
+- portable 
+
+
+
+Name some Python Errors.
+
+  AssertionError
+  EOFError
+  ImportError
+  IndentationError 
+  Index Error
+  IOError
+  KeyError
+  NameError
+  RuntimeError
+  StopIteration
+  SyntaxError
+  TypeError
+  ValueError
+  ZeroDivisionError
+
+
+
+Name some Python Modules.
+
+  DBs:
+
+anydbm, dbm
+
+ldap
+
+memcached, mongodb, mysql
+
+psycopg2
+
+redis
+
+sqlite3, sqlalchemy
+
+
+A3
+
+
+anydbm, argparse, array,
+
+aiohttp
+
+asyncio, asynchat, asyncore, 
+
+
+B2
+
+
+base64, bcrypt, bdb, 
+
+beautifulsoup, builtins, bz2
+
+
+C2
+
+calender, cgi, collections
+
+copy, crypt, csv
+
+
+D
+
+
+datetime, decimal, doctest
+
+
+E
+
+
+email
+
+
+F
+
+
+filecmp, flask, ftplib
+
+
+flask_bcrypt, _login, _mail,
+
+_sqlalchemy, _wtf, 
+
+gevent, gunicorn, 
+
+itsdangerous, 
+
+PIL, wtforms,
+
+psycopg2, sqlite
+
+unittest, nose(2), pytest
+
+selenium 
+
+
+G
+
+gc, getpass, gzip
+
+
+H2
+
+
+hashlib, heapq, hmac, 
+
+html, http, httplib
+
+
+I2
+
+
+imaplib, importlib, io
+
+ipaddress, iPython, itertools
+
+
+J
+
+
+json
+
+
+K
+
+
+keyword
+
+
+L
+
+
+ldap, locale, logging
+
+
+M3
+
+
+mailbox, mailcap, marshall, 
+
+math,mimetypes,multiprocessing
+
+(cmath)
+
+
+N
+
+
+nntplib, numbers, numpy, 
+
+
+O
+
+
+operator, optparse, os
+
+
+P3
+
+
+pdb, pickle, platform
+
+poplib, pprint, pwd
+
+psycopg2
+
+
+Q
+
+
+queue 
+
+
+R2
+
+
+random, re, readline,
+
+redis, requests, rlcompleter
+
+
+S5
+
+
+sar, shlex, shutil,
+
+smtpd, smtplib
+
+socketserver, socket, 
+
+sys, syslog, ssl, 
+
+spwd, stringIO, subprocess
+
+
+T2
+
+
+tarfile, thread, threading 
+
+time, tornado, twisted
+
+
+U
+
+
+unittest, urllib2, uuid
+
+
+V
+
+
+venv, vmstat
+
+
+W
+
+
+warnings, wave, webbrowser
+
+
+X
+
+
+xml, xmlrpc
+
+
+Y
+
+
+yaml
+
+
+Z
+
+
+zipfile, zipimport, zlib
+
+
+
+Name some Python Builtin functions.
+
+Builtins:
+
+ - Help   11
+
+       dir, help, type, chr, ord,
+
+       locals, globals, vars, 
+
+       print, repr, str
+
+ - Data Structures   5
+
+       list, tuple, set, fs, dict
+
+ - Work with Sequences   16
+
+       all, any, enumerate, filter, iter,
+
+       len, map, max, min, next,
+
+       range, reversed, 
+
+       slice, sorted, sum,
+
+       zip
+
+ - Numbers   9
+
+       int, float, complex,
+
+       bin, oct, hex,
+
+       abs, power, round,
+
+ - Classes & Properties   10
+
+       object, property,
+
+       classmethod, staticmethod,
+
+       isinstance, issupper,
+
+       setattr, hasattr, getattr,
+
+       delattr
+
+ - Extras   6
+
+       ascii, bool, compile,
+
+       divmod,
+
+       eval, exec, 
+
+
+
+Name some HTTP Status Codes from Python module http.HTTPStatus.
+
+
+1xx Informational
+
+  100 Continue
+
+  101 Switching Protocols
+
+  102 Processing
+
+
+2xx Success
+
+   200 OK
+
+   201 Created
+
+   202 Accepted
+
+
+3xx Redirection
+
+   300 Multiple Choices
+
+   301 Moved Permanently
+
+   302 Found
+
+
+4xx Client Error
+
+   400 Bad Request
+
+   401 Unauthorized
+
+   402 Payment Required
+
+   403 Forbidden
+
+   404 Not Found
+
+   405 Method Not Allowed
+
+   406 Not Acceptable
+
+   407 Proxy Auth Required
+
+   408 Request Timeout
+
+   409 Confilct
+
+   410 Gone
+
+
+5xx Server Error
+
+   500 Internal Server Error
+
+   501 Not Implemented
+
+   503 Service Unavailable
+
+
+
+"""c1_dictionary_create.py"""
+
+#!/bin/python3.6
+
+
+def main():
+    input("Press Enter to continue...")
+    print()
+    print("Empty Dictionary Create.")
+    input()
+    print("d = {}")
+    input()
+    print("Type 1 Dictionary Create.")
+    input()
+    print("d1 = {'a':1, 'b':2, 'c':3}")
+    input()
+    print("Type 2 Dictionary Create.")
+    input()
+    print("d2 = dict(a=1, b=2, c=3)")
+    input()
+    print("Type 3 Dictionary Create.")
+    input()
+    print("d3 = dict([('a',1), ('b',2), ('c',3)])")
+    input()
+    print("Get Dictionary item with default value.")
+    input()
+    print("d1.get('r', 33)")
+    input()
+    print("List out all of the Dictionary keys.")
+    input()
+    print("d1.keys()")
+    input()
+    print("List out all of the Dictionary values.")
+    input()
+    print("d1.values()")
+    input()
+    print("Remove Dictionary item.")
+    input()
+    print("del d1['a']")
+    input()
+    print("Iterate through Dictionary and print out keys.")
+    input()
+    print("for key in d3:")
+    print("    print(key)")
+    input()
+    print("Iterate through Dictionary and print out values.")
+    input()
+    print("for key in d3:")
+    print("    print(d3[key])")
+    input()
+
+
+if __name__ == '__main__':
+    main()
+
+
+
+"""c2_set_create.py"""
+
+#!/bin/python3.6
+
+
+def main():
+    input("Press Enter to continue...")
+    print()
+    print("Create three sets.")
+    input()
+    print("s1 = set(['cat', 'dog'])")
+    print("s2 = set(['dog', 'mouse'])")
+    print("s3 = s1 & s2")
+    input()
+    print("Intersection.")
+    input()
+    print("s1 & s2")
+    input()
+    print("Union.")
+    input()
+    print("s1 | s2")
+    input()
+    print("Difference.")
+    input()
+    print("s1 - s3")
+    input()
+    print("Symmetric Difference.")
+    input()
+    print("s1 ^ s2")
+    input()
+    print("issubset")
+    input()
+    print("s3 < s1")
+    input()
+    print("issupperset")
+    input()
+    print("s1 > s3")
+    input()
+    print("isdisjoint")
+    input()
+    print("s5 = set(['bird', 'fish'])")
+    print("s1.isdisjoint(s5)")
+    print()
+    input()
+
+
+if __name__ == '__main__':
+    main()
+
+
+
+"""c3_comprehensions.py"""
+
+#!/bin/python3.6
+
+
+def main():
+    input("Press Enter to continue...")
+    print()
+    print("Create a list of numbers from 1 to 10.")
+    input()
+    print("[ n for n in range(1, 11) ]")
+    input()
+    print("Create a list of even numbers from 1 to 10.")
+    input()
+    print("[ n for n in range(1, 11) if n % 2 == 0 ]")
+    input()
+    print("Create a list of numbers divisible by 2 & 3 from 1 to 10.")
+    input()
+    print("[ n for n in range(1, 11) if n % 2 == 0 if n % 3 == 0 ]")
+    input()  
+    print("Create a set of even numbers from 1 to 10.")
+    input()
+    print("{ n for n in range(1, 11) if n % 2 == 0 }")
+    input()
+    print("Create a Dictionary.")
+    input()
+    print("d = { 'a':1, 'b':2, 'c':3 }")
+    input()
+    print("Using a Dictionary Comprehension, generate the full Dictionary.")
+    input()
+    print("d = { key:value for (key,value) in d.items() }")
+    input()
+    print("Using a Dictionary Comprehension, generate a Dictionary with only even values.")
+    input()
+    print("d = { key:value for (key,value) in d.items() if value % 2 == 0 }")
+    input()
+    print("What is the syntax for List, Generator, Set & Dictionary Comprehension?")
+    input()
+    print("[ expr ], ( expr ), { expr }, { dict expr }")
+    input()
+
+
+if __name__ == '__main__':
+    main()
+
+
+
+"""factorial.py"""
+
+#!/bin/python3.6
+
+
+def factorial_iter1(n):
+    """
+    Iterative: Returns n!
+    """
+    if n <= 1:
+        return 1
+
+    result = 1
+    for i in range(2, n + 1):
+        result *= i
+
+    return result
+
+
+def factorial_iter2(n):
+    """
+    Iterative: Returns n!
+    """
+    if n <= 1:
+        return 1
+
+    result = 1
+    while n >= 1:
+        result *= n
+        n -= 1
+
+    return result
+
+
+def factorial_recur(n):
+    """
+    Recursive: Returns n!
+    """
+    if n <= 1:
+        return 1
+    else:
+        return n * factorial_recur(n - 1)
+
+
+def main():
+    print(factorial_iter(5))
+    print(factorial_recur(5))
+
+
+if __name__ == '__main__':
+    main()
+
+
+
+"""fibonacci.py"""
+ 
+#!/bin/python3.6
+
+
+def fibonacci_iter():
+    """
+    Iterative: Display Fibonacci sequence using a generator.
+    """
+    a, b = 0, 1
+    while True:
+        yield a
+        a, b = b, a + b
+
+
+def fibonacci_recur(n):
+    """
+    Recursive: Display Fibonacci sequence.
+    """
+    if n == 0:
+        return 0
+    elif n == 1:
+        return 1
+    else:
+        return fibonacci_recur(n - 1) + fibonacci_recur(n - 2)
+
+
+def main():
+    print("*** fibonacci_iter() ***")
+    fib = fibonacci_iter()
+    for i in range(11):
+        print(fib.__next__(), ' ', end='')
+    print("\n\n")
+
+    print("*** fibonacci_recur() ***")
+    for i in range(11):
+        print(fibonacci_recur(i), ' ', end='')
+    print("\n")
+
+
+if __name__ == '__main__':
+    main()
+
+
+
+"""f_sum.py"""
+
+#!/bin/python3.6
+
+
+def sumfn_iter1(seq):
+    """
+    Iterates through a list of numbers and returns the sum.
+    """
+    index = len(seq) - 1
+
+    result = 0
+    while index >= 0:
+        result += seq[index]
+        index -= 1
+
+    return result
+
+
+def sumfn_iter2(seq):
+    """
+    Iterates through a list of numbers and returns the sum.
+    """
+    result = 0
+
+    for n in seq:
+        result += n
+
+    return result
+
+
+def sumfn_recur(seq):
+    """
+    Using Recursion, sum a list of numbers.
+    """
+    if len(seq) == 0:
+        return 0
+    else:
+        return seq[0] + sumfn_recur(seq[1:])
+
+
+def main():
+    alist = [3, 2, 1]
+    print("sumfn_iter")
+    print(sumfn_iter(alist))
+
+    alist = [3, 2, 1]
+    print("sumfn_recur")
+    print(sumfn_recur(alist))
+
+
+if __name__ == '__main__':
+    main()
+
+
+
+"""f_map.py"""
+ 
+#!/bin/python3.6
+
+
+def mapfn(fn, seq):
+    """
+    Applies a function to each item in the list.
+    """
+
+    result = []
+
+    for item in seq:
+        result.append(fn(item))
+
+    return result
+
+
+def main():
+    f = (lambda x: x * x)
+    alist = [3, 2, 1]
+    print(mapfn(f, alist))
+
+
+if __name__ == '__main__':
+    main()
+
+
+
+"""f_vmreader.py"""
+
+#!/bin/python3.6
+
+
+import sys
+
+
+def vm_reader():
+    while True:
+        line = sys.stdin.readline()
+        free_memory = line.split()[3]
+        if free_memory.isdigit() and int(free_memory) < 3999999:
+            print("ALERT: Free Memory ({}) is below Threshold!!!".format(free_memory))
+        else:
+            print("Memory OK: ({}).".format(free_memory))
+
+
+def main():
+    vm_reader()
+
+if __name__ == '__main__':
+    main()
+
+
+
+"""srch1_linear_search.py"""
+
+#!/bin/python3.6
+
+
+def linear_sequential_search1(seq, item):
+    """O(n)"""
+
+    found = False
+    index = 0
+
+    while index < len(seq) and not found:
+        if seq[index] == item:
+            found = True
+        else:
+            index += 1
+
+    return found
+
+
+def linear_sequential_search2(seq, item):
+    """O(n)"""
+
+    found = False
+
+    for index in range(len(seq)):
+        if seq[index] == item:
+            found = True
+            print("Index: {}".format(index))
+
+    return found
+
+
+def main():
+    alist = [1, 2, 32, 8, 13, 17, 19, 42, 13, 0]
+    print("*** alist ***")
+    print(alist, '\n')
+    print("*** linear_sequential_search1(alist, 3) ***")
+    print(linear_sequential_search1(alist, 3), '\n')
+    print("*** linear_sequential_search1(alist, 13) ***")
+    print(linear_sequential_search1(alist, 13), '\n')
+
+    print("*"*50, '\n')
+
+    print("*** linear_sequential_search2(alist, 3) ***")
+    print(linear_sequential_search2(alist, 3), '\n')
+    print("*** linear_sequential_search2(alist, 13) ***")
+    print(linear_sequential_search2(alist, 13), '\n')
+
+
+if __name__ == '__main__':
+    main()
+
+
+
+"""srch2_binary_bisection_search.py"""
+
+#!/bin/python3.6
+
+
+def binary_bisection_search(seq, n):
+    """
+    Performs a Binary/Bisection divide and conquer approach to searching
+    for an item in a list.  O(log n).
+    The list has to be sorted.
+    """
+
+    if len(seq) == 0 or (len(seq) == 1 and seq[0] != n):
+        return False
+
+    midpoint_idx = len(seq)//2
+    midpoint_value = seq[midpoint_idx]
+
+    if n == midpoint_value:
+        return True
+    elif n < midpoint_value:
+        return binary_bisection_search(seq[:midpoint_idx], n)
+    elif n > midpoint_value:
+        return binary_bisection_search(seq[midpoint_idx + 1:], n)
+
+
+def main():
+    alist = [17, 20, 26, 31, 44, 54, 55, 77, 93]
+    print("*** alist ***")
+    print(alist, '\n')
+    print("*** binary_bisection_search(alist, 93) ***")
+    print(binary_bisection_search(alist, 93), '\n')
+    print("*** binary_bisection_search(alist, 13) ***")
+    print(binary_bisection_search(alist, 13), '\n')
+
+
+if __name__ == '__main__':
+    main()
+
+
+
+"""srt1_bubble_sort.py"""
+
+#!/bin/python3.6
+
+
+def bubble_sort(seq):
+    """
+    Repeatedly iterate through a list swapping values that are not in order.
+    O(n^2)
+    """
+    if len(seq) <= 1:
+        return seq
+
+    _sorted = False
+
+    while not _sorted:
+        _sorted = True
+        for index in range(1, len(seq)):
+            if seq[index] < seq[index - 1]:
+                _sorted = False
+                seq[index], seq[index - 1] = seq[index - 1], seq[index]
+    return seq
+
+
+def main():
+    alist = [54,26,93,17,77,31,44,55,20]
+    print("*** alist ***")
+    print(alist, '\n')
+    print("*** bubble_sort(alist) ***")
+    print(bubble_sort(alist), '\n')
+
+
+if __name__ == '__main__':
+    main()
+
+
+
+"""srt2_selection_sort.py"""
+
+#!/bin/python3.6
+
+
+def selection_sort(seq):
+    """
+    The algorithm divides the input list into two parts: the sublist of items
+    already sorted, which is built up from left to right at the front (left) 
+    of the list, and the sublist of items remaining to be sorted that occupy 
+    the rest of the list. Initially, the sorted sublist is empty and the 
+    unsorted sublist is the entire input list. The algorithm proceeds by 
+    finding the smallest element in the unsorted sublist, exchanging 
+    (swapping) it with the leftmost unsorted element (putting it in sorted 
+    order), and moving the sublist boundaries one element to the right.    
+
+    Takes a list as input. sorted_length is length of sorted portion.
+    min_idx is the index of smallest item found. 
+    
+    O(n^2)
+    """
+    if len(seq) <= 1:
+        return seq
+
+    sorted_length = 0
+    while sorted_length < len(seq):
+        min_idx = None
+        for index, element in enumerate(seq[sorted_length:]):
+            if min_idx == None or element < seq[min_idx]:
+                min_idx = index + sorted_length
+        seq[sorted_length], seq[min_idx] = seq[min_idx], seq[sorted_length]
+        sorted_length += 1
+    return seq
+
+
+def main():
+    alist = [54, 26, 93, 17, 77, 31, 44, 55, 20]
+    print("*** alist ***")
+    print(alist, '\n')
+    print("*** selection_sort(alist) ***")
+    print(selection_sort(alist), '\n')
+
+
+if __name__ == '__main__':
+    main()
+
+
+
+"""srt3_insertion_sort.py"""
+
+#!/bin/python3.6
+
+
+def insertion_sort(seq):
+    """
+    The algorithm iterates, consuming one input element each repetition, and 
+    growing a sorted output list.  At each iteration, insertion sort removes 
+    one element from the input data, finds the location it belongs within the 
+    sorted list, and inserts it there. It repeats until no input elements 
+    remain.
+
+    Takes a list as input. sorted_length is length of sorted portion.
+
+    O(n^2)
+    """
+    if len(seq) <= 1:
+        return seq
+
+    for sorted_length in range(1, len(seq)):
+
+        insert_idx = sorted_length
+
+        while insert_idx > 0 and seq[insert_idx] < seq[insert_idx - 1]:
+            seq[insert_idx], seq[insert_idx - 1] = seq[insert_idx - 1], seq[insert_idx]
+            insert_idx -= 1
+
+    return seq
+
+
+def insertion_sort_words(seq):
+    """
+    Takes a list of words and sorts them by thier first letter.
+    O(n^2)
+    """
+    if len(seq) <= 1:
+        return seq
+    
+    for sorted_length in range(1, len(seq)):
+
+        insert_idx = sorted_length
+
+        while insert_idx > 0 and seq[insert_idx][0] < seq[insert_idx - 1][0]:
+            seq[insert_idx], seq[insert_idx - 1] = seq[insert_idx - 1], seq[insert_idx]
+            insert_idx -= 1
+
+    return seq
+
+
+def insertion_sort_last_names(seq):
+    """
+    Takes a list of First and Last names and sorts them by last name.
+    O(n^2)
+    """
+    if len(seq) <= 1:
+        return seq
+
+    for sorted_length in range(1, len(seq)):
+
+        insert_idx = sorted_length
+
+        while insert_idx > 0 and seq[insert_idx].split()[1][0] < seq[insert_idx - 1].split()[1][0]:
+            seq[insert_idx], seq[insert_idx - 1] = seq[insert_idx - 1], seq[insert_idx]
+            insert_idx -= 1
+
+    return seq
+
+
+def main():
+    alist = [54, 26, 93, 17, 77, 31, 44, 55, 20]
+    print("*** alist ***")
+    print(alist, '\n')
+    print("*** insertion_sort(alist) ***")
+    print(insertion_sort(alist), '\n')
+
+
+if __name__ == '__main__':
+    main()
+
+
+
+"""srt5_quicksort.py"""
+
+#!/bin/python3.6
+
+
+from random import randint
+
+
+def quicksort(seq):
+    """O(n log(n))"""
+
+    if len(seq) <= 1:
+        return seq
+
+    smaller, equal, larger = [], [], []
+    pivot = seq[randint(0, len(seq) - 1)]
+
+    for x in seq:
+        if x < pivot:     smaller.append(x)
+        elif x == pivot:  equal.append(x)
+        else:             larger.append(x)
+
+    return quicksort(smaller) + equal + quicksort(larger)
+
+
+def main():
+    alist = [54, 26, 93, 17, 77, 31, 44, 55, 20]
+    print("*** alist ***")
+    print(alist, '\n')
+    print("*** quicksort(alist) ***")
+    print(quicksort(alist), '\n')
+
+
+if __name__ == '__main__':
+    main()
+
+
+
+"""srt6_merge_sort.py"""
+
+#!/bin/python3.6
+
+
+def merge(seq1, seq2):
+    """
+    Takes two sorted lists and merges them together.
+    """
+
+    c = []
+    seq1_idx, seq2_idx = 0, 0
+
+    while seq1_idx < len(seq1) and seq2_idx < len(seq2):
+        if seq1[seq1_idx] < seq2[seq2_idx]:
+            c.append(seq1[seq1_idx])
+            seq1_idx += 1
+        else:
+            c.append(seq2[seq2_idx])
+            seq2_idx += 1
+
+    if seq1_idx == len(seq1):
+        c.extend(seq2[seq2_idx:])
+    elif seq2_idx == len(seq2):
+        c.extend(seq1[seq1_idx:])
+
+    return c
+
+
+def merge_sort(seq):
+    """
+    Takes an unsorted list and implements a divide and conquer strategy
+    to sort the list.  Breaks the unsorted list down to the smallest sorted
+    unit.  Then repeatedly merge the sorted sublists until you create the
+    full final sorted list. 
+    O(n log(n))
+    """
+
+    if len(seq) <= 1:
+        return seq
+    else:
+        midpoint_idx = len(seq)//2
+        left, right = merge_sort(seq[:midpoint_idx]), merge_sort(seq[midpoint_idx:])
+        return merge(left, right)
+
+
+def main():
+    alist = [54, 26, 93, 17, 77, 31, 44, 55, 20]
+    print("*** alist ***")
+    print(alist, '\n')
+    print("*** merge_sort(alist) ***")
+    print(merge_sort(alist), '\n')
+
+
+if __name__ == '__main__':
+    main()
+

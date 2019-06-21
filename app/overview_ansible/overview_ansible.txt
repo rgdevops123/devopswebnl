@@ -1,0 +1,244 @@
+
+
+   Ansible is Free and Open Source and Maintained by Redhat.
+
+Can handle IT orchestration where tasks are run in sequence in several different machines or servers.
+
+Ansible does this by connecting to multiple machines through SSH and runs the tasks which have been configured into playbooks and uses a simple language called YAML (Yet Another Markup Language).
+
+Ansible does not use an agent to automate tasks on different machines.
+
+
+
+   *** Ansible's three main components ***
+
+      Control Machine - Manages the execution of the Playbook.
+      Inventory - Complete list of all the target machines.
+      Playbook - Tasks to perform on target machines.
+
+
+
+   *** Installation (CentOS 7) ***
+
+      $ sudo yum -y install ansible
+
+
+
+   *** Verify Ansible Installation ***
+
+      $ ansible --version
+
+
+
+   *** Ansible configuration File ***
+
+      /etc/ansible/ansible.cfg
+
+
+
+   *** Ansible Server Inventory File ***
+
+      /etc/ansible/hosts   
+
+
+
+   *** Running a Playbook ***
+
+      $ ansible-playbook <playbook.yml>
+
+
+
+   *** Check a Playbook for syntax Errors ***
+
+      $ ansible-playbook <playbook.yml> --syntax-check
+
+
+
+   *** List the hosts for a Playbook ***
+
+      $ ansible-playbook <playbook.yml> --list-hosts
+
+
+
+   *** Sample Playbook ***
+
+      $ vim create_files.yml
+
+         ---
+         - name: Create files on Servers.
+           become: true
+           hosts: webservers
+           tasks:
+             - name: Create data1.txt on Server.
+               file:
+                 dest: /home/webadmin/data1.txt
+                 state: touch
+                 mode: 0600
+                 owner: webadmin
+                 group: webadmin
+         ...
+
+
+
+
+   *** Sample Ansible Hosts File ***
+
+      $ sudo vim /etc/ansible/hosts
+
+         [webservers]
+         172.16.91.181
+         172.16.91.182
+         172.16.91.183
+
+ 
+
+   *** Test Connectivity of the servers under the webserver's group *** 
+
+      $ ansible webservers -m ping
+
+         172.16.91.182 | SUCCESS => {
+             "changed": false,
+             "ping": "pong"
+         }
+
+
+   *** List the hosts in the inventory file ***
+
+      $ ansible webservers --list-hosts
+
+           hosts (3):
+             172.16.91.181
+             172.16.91.182
+             172.16.91.183
+
+
+
+   *** Setup Module ***
+
+Gather information about target machines network, hardware, OS version, memory, etc...
+
+      $ ansible webservers -m setup
+
+
+
+   *** Command Module ***
+
+Execute a specific command on a target machine and get the output.
+
+      $ ansible webservers -m command -a 'uptime'
+           172.16.91.182 | CHANGED | rc=0 >>
+            20:38:35 up  2:21,  5 users,  load average: 0.00, 0.09, 0.14
+
+      $ ansible webservers -m command -a 'hostname'
+           172.16.91.182 | CHANGED | rc=0 >>
+           ansible2node
+
+
+
+   *** Shell Module ***
+
+      $ ansible webservers -m shell -a 'ps -ef | grep firefox'
+           172.16.91.182 | CHANGED | rc=0 >>
+           rgriffi+ 50772  6922  2 20:26 ?        00:00:25 /usr/lib64/firefox/firefox
+
+
+
+   *** User Module ***
+
+Add a user.
+      $ python
+      >>> import crypt
+      >>> crypt.crypt('password123')
+      '!@#$%^'
+
+      $ ansible webservers -m user -a 'name=webadmin password=!@#$%^ -comment="Web Admin" -uid=3001' --become
+
+
+Delete a user.
+
+      $ ansible webservers -m user -a 'name=webadmin state=absent' --become
+
+
+
+   *** Group Module ***
+
+Add a group.
+
+      $ ansible webservers -m group -a 'name=webadmin gid=9001 state=present' --become
+
+
+Delete a group.
+
+      $ ansible webservers -m group -a 'name=webadmin state=absent' --become
+
+
+
+   *** File Module ***
+
+Create a file.
+
+      $ ansible webservers -m file -a 'dest=/home/webadmin/data.txt state=touch mode=600 owner=webadmin group=webadmin' --become
+
+
+Delete a file.
+
+      $ ansible webservers -m file -a 'dest=/home/webadmin/data.txt state=absent' --become
+
+
+Create a directory.
+
+      $ ansible webservers -m file -a 'dest=/home/webadmin/incoming state=directory mode=755 owner=webadmin group=webadmin' --become
+
+
+Delete a directory.
+
+      $ ansible webservers -m file -a 'dest=/home/webadmin/incoming state=absent' --become
+
+
+
+   *** Copy Module ***
+
+Copy a file.
+
+      $ ansible webservers -m copy -a 'src=/outgoing/data.txt dest=/home/webadmin/data.txt' --become
+
+
+
+   *** Packages Module ***
+
+Install a Package.
+
+      $ ansible webservers -m yum -a 'name=httpd state=present' --become
+      $ ansible webservers -m apt -a 'name=httpd state=present' --become
+
+
+Check if the package is installed & update it to the latest version.
+
+      $ ansible webservers -m yum -a 'name=httpd state=latest' --become
+      $ ansible webservers -m apt -a 'name=httpd state=latest' --become
+
+
+Remove a Package.
+
+      $ ansible webservers -m yum -a 'name=httpd state=absent' --become
+      $ ansible webservers -m apt -a 'name=httpd state=absent' --become
+
+
+
+   *** Services Module ***
+
+Start a Service.
+
+      $ ansible webservers -m service -a 'name=httpd state=started' --become
+
+
+Stop a Service.
+
+      $ ansible webservers -m service -a 'name=httpd state=stopped' --become
+
+
+Restart a Service.
+
+      $ ansible webservers -m service -a 'name=httpd state=restarted' --become
+
+

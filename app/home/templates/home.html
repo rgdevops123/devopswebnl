@@ -1,0 +1,61 @@
+{% extends "base_site.html" %}
+
+{% block title %} Home {% endblock title %}
+
+{% block stylesheets %}
+  {{ super() }}
+{% endblock stylesheets %}
+
+{% block content %}
+
+    <div class="right_col" role="main">
+      <div class="">
+        <div class="page-title">
+          <div class="title_left">
+            <h3 id="devopsweb-page-title">Home</h3>
+          </div>
+
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="row">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+              <div class="x_title">
+                <h2>System Configuration</h2>
+
+                <div class="clearfix"></div>
+              </div>
+              <div class="x_content">
+                Hostname: <strong>{{ hostname }}</strong>
+              </div>
+              <div class="x_content">
+                Operating System Distribution: <strong>{{ osdistribution }}</strong>
+              </div>
+              <div class="x_content">
+                Operating System Version: <strong>{{ osversion }}</strong>
+              </div>
+              <div class="x_content">
+                Operating System Release: <strong>{{ osrelease }}</strong>
+              </div>
+              <div class="x_content">
+                System Processor: <strong>{{ sysprocessor }}</strong>
+              </div>
+              <div class="x_content">
+                System Architecture: <strong>{{ sysarchitecture }}</strong>
+              </div>
+              <div class="x_content">
+                Python Version: <strong>{{ pythonversion }}</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+{% endblock content %}
+
+{% block javascripts %}
+  {{ super()}}
+{% endblock javascripts %}

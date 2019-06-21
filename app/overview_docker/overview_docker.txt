@@ -1,0 +1,4 @@
+
+   Docker is a container management service.
+
+Docker's keywords are build, ship and run anywhere.  The whole idea of Docker is for developers to easily develop applications, ship them into containers which can then be deployed anywhere.
