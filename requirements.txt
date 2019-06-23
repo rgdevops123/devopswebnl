@@ -1,17 +1,12 @@
-bcrypt
 coveralls
 coverage
 flake8
 flask
-flask_login
-flask_mail
 flask_migrate
-flask_sqlalchemy
 flask_testing
 flask_wtf
 gunicorn
 nose2
-psycopg2
 pytest
 python-dotenv
 selenium

@@ -73,32 +73,31 @@
 
 
 ### Set FLASK APP
-    $ export FLASK_APP=devopsweb.py
+    $ export FLASK_APP=devopswebnl.py
         OR
-    $ export FLASK_APP=./devopsweb.py
+    $ export FLASK_APP=./devopswebnl.py
         OR
-    $ export FLASK_APP=/FULL_PATH_TO/devopsweb.py
+    $ export FLASK_APP=/FULL_PATH_TO/devopswebnl.py
 
 
 ### Run the Application
        Using gunicorn.
-    $ /usr/bin/gunicorn --config gunicorn.py devopsweb:app &
+    $ /usr/bin/gunicorn --config gunicorn.py devopswebnl:app &
 
        Using flask.
     $ flask run --host=0.0.0.0 --port=5000
 
        Using docker.
-    $ sudo docker run --env-file .env -d --rm --name devopsweb -p 5000:5000 rgdevops123/devopsweb
-        --env-file .env   ### Use .env environment file.
-        -d                ### Detached mode: Run the container in the background.
-        --rm              ### Automatically remove the container when it exits.
-        --name devopsweb  ### Name the Docker container devopsweb.
-        -p 5000:5000      ### Publish a container's port. hostPort:containerPort
+    $ sudo docker run --env-file .env -d --rm --name devopswebnl -p 5000:5000 rgdevops123/devopswebnl
+        --env-file .env     ### Use .env environment file.
+        -d                  ### Detached mode: Run the container in the background.
+        --rm                ### Automatically remove the container when it exits.
+        --name devopswebnl  ### Name the Docker container devopswebnl.
+        -p 5000:5000        ### Publish a container's port. hostPort:containerPort
 
 
 ### ============================================
 ### Run Tests
-    $ export SQLALCHEMY_DATABASE_URI_DEBUG='sqlite:////tmp/testdatabase.db'
     $ pytest -v --disable-pytest-warnings
        -v                          ### Verbose
        --disable-pytest-warnings   ### Disable pytest warnings.
