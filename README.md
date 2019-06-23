@@ -2,7 +2,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/rgdevops123/devopswebnl/badge.svg?branch=master)](https://coveralls.io/github/rgdevops123/devopswebnl?branch=master)
 
 # devopswebnl
-### Dev Ops Web No Login
+### Dev Ops Web No Login.
 
 ### Get the code from GITHUB
 
