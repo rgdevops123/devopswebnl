@@ -56,32 +56,14 @@
 
     $ vim .env.sh
     export DEVOPSWEB_CONFIG_MODE=Production
-    export MAIL_SERVER='you.email.server'
-    export MAIL_PORT=your-mail-port
-    export MAIL_USE_TLS=True
-    export MAIL_USERNAME='your-email@example.com'
-    export MAIL_PASSWORD='your-password'
-    export POSTGRES_USER=your-database-user
-    export POSTGRES_PASSWORD=your-database-password
-    export POSTGRES_DB=your-database-name
     export SECRET_KEY='your-secret-key'
-    export SQLALCHEMY_DATABASE_URI_DEBUG='sqlite:////tmp/database.db'
     export SQLALCHEMY_TRACK_MODIFICATIONS=False
 
 
 ### Create a .env file for docker-compose and docker --env-file option.
     $ vim .env
     DEVOPSWEB_CONFIG_MODE=Production
-    MAIL_SERVER=your-mail-server   ###Set to localhost if using local Postfix Mail Server.
-    MAIL_PORT=your-mail-port
-    MAIL_USE_TLS=True
-    MAIL_USERNAME=your-email@example.com
-    MAIL_PASSWORD=your-password
-    POSTGRES_USER=your-database-user
-    POSTGRES_PASSWORD=your-database-password
-    POSTGRES_DB=your-database-name
     SECRET_KEY=your-secret-key
-    ###Use For Development###SQLALCHEMY_DATABASE_URI=sqlite:////tmp/database.db
     SQLALCHEMY_TRACK_MODIFICATIONS=False
 
 
@@ -115,29 +97,6 @@
 
 
 ### ============================================
-### Database Migrations
-             *** Method 1 ***
-       ### Source the environment file.
-    $ cd ../devopsweb
-    $ export FLASK_APP=devopsweb.py
-    $ vim app/models.py
-       ### Update Model.
-    $ flask db init
-    $ flask db migrate
-    $ flask db upgrade
-
-             *** Method 2 ***
-        ### Source the environment file.
-    $ cd ../devopsweb
-    $ export FLASK_APP=devopsweb.py
-    $ vim app/models.py
-       ### Update Model.
-    $ python3.6 manage.py db init
-    $ python3.6 manage.py db migrate
-    $ python3.6 manage.py db upgrade
-    
-
-### ============================================
 ### Run Tests
     $ export SQLALCHEMY_DATABASE_URI_DEBUG='sqlite:////tmp/testdatabase.db'
     $ pytest -v --disable-pytest-warnings
@@ -151,7 +110,6 @@
 
 ### ============================================
 ### Run coverage.py testing 123
-    $ export SQLALCHEMY_DATABASE_URI_DEBUG='sqlite:////tmp/testdatabase.db'
     $ coverage run --source=./app -m pytest -v --disable-pytest-warnings
     $ coverage report
     $ coverage html

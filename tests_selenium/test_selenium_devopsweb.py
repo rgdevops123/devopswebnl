@@ -1,10 +1,8 @@
 from flask import url_for
 from flask_testing import LiveServerTestCase
-from bcrypt import gensalt, hashpw
 
 from config import config_dict
-from app import create_app, db
-from app.models import User
+from app import create_app
 
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
@@ -39,77 +37,8 @@ class TestBase(LiveServerTestCase):
             log_path="./tests_selenium/geckodriver.log")
         self.driver.get(self.get_server_url())
 
-        db.session.commit()
-        db.drop_all()
-        db.create_all()
-
-        password = "123"
-        hashed_password = hashpw(password.encode('utf8'), gensalt())
-        admin = User(username="admin",
-                     email="admin@test.com",
-                     password=hashed_password)
-        testuser1 = User(username="testuser1",
-                         email="testuser1@test.com",
-                         password=hashed_password)
-
-        testuser2 = User(username="testuser2",
-                         email="testuser2@test.com",
-                         password=hashed_password)
-
-        db.session.add(admin)
-        db.session.add(testuser1)
-        db.session.add(testuser2)
-        db.session.commit()
-
     def tearDown(self):
-        db.session.remove()
-        db.drop_all()
         self.driver.quit()
-
-
-class TestRegistrationAndLoginCase(TestBase):
-
-    def test_selenium_registration_and_login(self):
-        """
-        Test that a user can create an account using the registration form
-        if all fields are filled out correctly and that user will be
-        redirected to the login page.
-        Then test that a user can login and that they will be redirected to
-        the homepage.
-        """
-
-        """Click register menu link."""
-        self.driver.find_element_by_id("register").click()
-        time.sleep(1)
-
-        """Fill in registration form."""
-        self.driver.find_element_by_id("username").send_keys(
-            "testuser1")
-        self.driver.find_element_by_id("email").send_keys(
-            "testuser1@test.com")
-        self.driver.find_element_by_id("password").send_keys(
-            "123")
-        self.driver.find_element_by_id("confirm_password").send_keys(
-            "123")
-        self.driver.find_element_by_id("submit").click()
-        time.sleep(1)
-
-        """Assert that browser redirects to login page."""
-        assert url_for('users_blueprint.login') in self.driver.current_url
-
-        """Assert success message is shown."""
-        success_message = self.driver.find_element_by_class_name("alert").text
-        assert "Your account has been created!" in success_message
-
-        """Fill in login form."""
-        self.driver.find_element_by_id("email").send_keys("testuser1@test.com")
-        self.driver.find_element_by_id("password").send_keys("123")
-        self.driver.find_element_by_id("submit").click()
-        time.sleep(1)
-
-        """Assert that browser redirects to home page."""
-        element = self.driver.find_element_by_tag_name('h3')
-        assert element.text == 'Home'
 
 
 class TestPages(TestBase):

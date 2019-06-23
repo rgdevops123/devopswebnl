@@ -1,22 +1,10 @@
 class TestPages(object):
 
-    """Ensure that root page requires user login."""
+    """Ensure that root page goes to Home."""
     def test_root_page(self, base_client):
         response = base_client.get('/')
         assert response.status_code == 302
-        assert b"/login" in response.data
-
-    """Ensure that the login page works correctly."""
-    def test_login_page(self, base_client):
-        response = base_client.get('/login')
-        assert response.status_code == 200
-        assert b"Login Form" in response.data
-
-    """Ensure that the register page works correctly."""
-    def test_register_page(self, base_client):
-        response = base_client.get('/register')
-        assert response.status_code == 200
-        assert b"Create Account" in response.data
+        assert b"/home" in response.data
 
     """Ensure that the home page works correctly."""
     def test_home_page(self, base_client):

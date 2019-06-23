@@ -1,13 +1,6 @@
 from app.errors import errors
 from flask import render_template
 
-from app import login_manager
-
-
-@login_manager.unauthorized_handler
-def unauthorized_handler():
-    return render_template('401.html'), 401
-
 
 @errors.app_errorhandler(403)
 def forbidden_error_403_handler(error):
