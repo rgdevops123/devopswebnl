@@ -3,7 +3,7 @@ Q: What is System load/CPU Load?
 
  A measurement of CPU over or under-utilization in a Linux system; the
 number of processes which are being executed by the CPU or in waiting
-state. Load average – is the average system load calculated over a
+state. Load average - is the average system load calculated over a
 given period of time of 1, 5 and 15 minutes.
 
 
@@ -83,7 +83,7 @@ Q: What is Apache Tomcat?
 Apache Tomcat (or simply Tomcat) is an open source web server and
 servlet container developed by the Apache Software Foundation (ASF).
 Tomcat implements the Java Servlet and the JavaServer Pages ( JSP )
-specifications from Oracle Corporation, and provides a “pure Java”
+specifications from Oracle Corporation, and provides a "pure Java"
 HTTP web server environment for Java code to run.
 
 
@@ -209,8 +209,8 @@ Q: How do you modify kernel parameters?
 # vim /proc or /proc/sys/*
    OR
 # vim /etc/sysctl.conf OR /etc/sysctl.d/99-example.conf
-# sysctl –p    ### To update.
-# sysctl –a    ### To check & confirm.
+# sysctl -p    ### To update.
+# sysctl -a    ### To check & confirm.
 
 
 Q: How do you Enable IP Forwarding?
@@ -332,7 +332,7 @@ Q: How do you check network port usage?
    netstat
           -a  (port usage)
           -l   (listeningPorts)
-          -n  (I.P.’s)
+          -n  (I.P.'s)
           -p  (processes)
           -r   (routingTable)
           -i   (interface~errors)
@@ -519,10 +519,10 @@ CPU
 MEMORY
  -/proc/meminfo
  -/proc/swaps
- ÷/proc/sys/vm/drop_caches
+ +/proc/sys/vm/drop_caches
 
 DISK
- ÷/proc/filesystems
+ +/proc/filesystems
  -/proc/mdstat
  -/proc/mounts
  -/proc/partitions
@@ -531,7 +531,7 @@ PROCESSES
 1 2 3 15681 8903 5932
 
 NETWORKING
- ÷/proc/net/bonding/bond0
+ +/proc/net/bonding/bond0
 
 
 Q: Tell me something about ext2?
@@ -591,7 +591,7 @@ Administers /etc/group and /etc/gshadow
 
 Q: What is umask?
 
-   ‘User file creation mask'
+   'User file creation mask'
 
 
 Q: What is the umask default?
@@ -602,7 +602,7 @@ Q: What is the umask default?
 Q: What is repquota?
 
 View user disk usage and quotas for file systems.
-A user’s quotas and number of files and amount of space (in kilobytes)
+A user's quotas and number of files and amount of space (in kilobytes)
 is printed
 
  Acronym:
@@ -636,7 +636,7 @@ Q: How do you create Quota Database Files?
 
 # quotacheck -cugv /data3
 
--c : create quota file and don’t use the existing file
+-c : create quota file and don't use the existing file
 -v : verbose output
 -u : user disk quota
 -g : group disk quota
@@ -872,7 +872,7 @@ Q: How do you specify an editor to open crontabs?
    # export EDITOR=vi
 
 
-Q: How do you edit crontab file, or create one if it doesn’t already exist?
+Q: How do you edit crontab file, or create one if it doesn't already exist?
 
    # crontab -e
 
@@ -1036,7 +1036,7 @@ Q: How do you display the ARP table?
 Q: How do you clear the ARP table?
 
 # ip -s -s neigh flush all
-      “-s, -stats, -statistics” => Output more information.
+      "-s, -stats, -statistics" => Output more information.
          If the option appears twice or more, the amount of
 information increases.
 # arp -n
@@ -1065,7 +1065,7 @@ Q: How do you Delete eth0?
 
 Q: What is the difference between raid 01 and raid 10?
 
-   RAID 0+1 (RAID 01) is “mirror of stripes”.  The disks within the
+   RAID 0+1 (RAID 01) is "mirror of stripes".  The disks within the
 groups are striped and the groups are mirrored.
 
    RAID 1+0 (RAID 10) is a "stripe of mirrors".   The disks within the
@@ -1238,7 +1238,7 @@ Q: How do you find Orphan process?
 # ps -elf | awk '{if ($5 == 1){print $4" "$5" "$15}}'
 
 
-Q: What does the “cksum” command do?
+Q: What does the "cksum" command do?
 
 cksum - checksum and count the bytes in a file
 
@@ -1264,7 +1264,7 @@ bzip2, bunzip2 - a block-sorting file compressor
 
 Q: What are UNIX System calls for a File?
 
-   • System calls for low level file I/O:
+   + System calls for low level file I/O:
 create
 open
 close
@@ -1276,7 +1276,7 @@ unlink
 
 Q: What are UNIX System calls for a process?
 
-   • System Calls for process control
+   + System Calls for process control
 exec
 fork
 wait
@@ -1287,14 +1287,14 @@ kill
 
 Q: What are UNIX System calls for IPC?
 
-   • System Calls for IPC
+   + System Calls for IPC
 dup
 pipe
 
 
 Q: What are UNIX System calls for Networking?
 
-   • Networking/Socket System calls:
+   + Networking/Socket System calls:
 socket
 bind
 listen
@@ -1306,31 +1306,31 @@ send
 receive
 
 
-• * Socket - The socket system call creates a new socket by assigning
++ * Socket - The socket system call creates a new socket by assigning
 a new descriptor.
 
-• * Bind - The bind system call associates a local network transport
++ * Bind - The bind system call associates a local network transport
 address with a socket
 
-• * Listen - This call indicates that the server process is ready to
++ * Listen - This call indicates that the server process is ready to
 accept any new incoming connections
 
-• * Accept - The accept system call is a blocking call that waits for
++ * Accept - The accept system call is a blocking call that waits for
 incoming connections.
 
-• * Connect - The connect system call is normally called by the client
++ * Connect - The connect system call is normally called by the client
 process to connect to the server process.
 
-• * Shutdown - The shutdown system call closes either one or both ends
++ * Shutdown - The shutdown system call closes either one or both ends
 of the connection.
 
-• * Close - The close system call closes or aborts any pending
++ * Close - The close system call closes or aborts any pending
 connections on the socket.
 
-• * Send - There are four system calls to send data on the n/w
++ * Send - There are four system calls to send data on the n/w
 interface: write, writev, sendto, and sendmsg.
 
-• * Receive - There are 4 system calls that can be used to receive
++ * Receive - There are 4 system calls that can be used to receive
 data from a connection: read, readv, recvfrom, and recvmsg.
 
 
@@ -1382,7 +1382,7 @@ True if file exists and is a regular file.
 -g file
 True if file exists and is set-group-id.
 
--h file {also –L}
+-h file {also -L}
 True if file exists and is a symbolic link.
 
 -k file
@@ -1544,7 +1544,7 @@ Q: How do you find out what services does this package require?
 # rpm -q --requires package
 
 
-Q: How do you clean up yum’s cache, packages, headers, metadata,
+Q: How do you clean up yum's cache, packages, headers, metadata,
 dbcache, rpmdb & plugins?
 
 # yum clean all
@@ -1755,7 +1755,7 @@ Q: How do you create an SSL Tunnel?
 
 # ssh -L 8888:smf1-afk-15-sr4.prod.tw.com:31567 nest1.corp.twitter.com -N
 
-  Then go to the website …
+  Then go to the website ...
     Ex: http://127.0.0.1:8888/
 
    OR
@@ -1766,7 +1766,7 @@ Socket Secure (SOCKS)
 
 Network => Advanced => SOCKS Proxy => 127.0.0.1:8080
 
-  Then go to the website …
+  Then go to the website ...
     Ex: http://smf1-afk-15-sr4.prod.tw.com:31567/
 
 
@@ -1781,11 +1781,11 @@ Q: What are the Private Address Spaces
 
 Q: What are the Network Number Address Ranges?
 
-A = 1   – 126 N.H.H.H     16,777,216 addresses
+A = 1   - 126 N.H.H.H     16,777,216 addresses
 L = 127
-B = 128 – 191 N.N.H.H         65,536 addresses
-C = 192 – 223 N.N.N.H            255 addresses
-D = 224 – 239 Reserved for Multicasting
+B = 128 - 191 N.N.H.H         65,536 addresses
+C = 192 - 223 N.N.N.H            255 addresses
+D = 224 - 239 Reserved for Multicasting
 E = 240 - 254 Experimental; Used for research
 
 
@@ -1857,7 +1857,7 @@ Q: How do you sync filesystems?
 Use rsync.
 # rsync [OPTIONS] [SRC] [DEST]
 -v : verbose
--r : copies data recursively (don’t preserve inode data)
+-r : copies data recursively (don't preserve inode data)
 -a : archive mode: copy files recursively, preserve inode data.
 -z : compress file data
 -h : human-readable, output numbers in a human-readable format
@@ -2303,10 +2303,10 @@ Filter
 
 Q: What are Python's logging config options?
 
-logging.basicConfig(format='%(asctime)s:%(levelname)s:%(module)s:%(funcName)s:%(message)s’,
+logging.basicConfig(format='%(asctime)s:%(levelname)s:%(module)s:%(funcName)s:%(message)s',
                     filename='example.log',
                     filemode='w',
-                    datefmt='%m/%d/%Y %I:%M:%S %p’,
+                    datefmt='%m/%d/%Y %I:%M:%S %p',
                     level=logging.DEBUG)
 
 
@@ -2387,7 +2387,7 @@ Number of days of warning before password expires : 7
 chage username
 
 
-   Q: How do you change the …
+   Q: How do you change the ...
 explicit expiration date
 
   (-E) to 01/31/2012,
@@ -2437,7 +2437,7 @@ mod_ssl
 mod_status
 
 
-Q: What is Apache’s DocumentRoot?
+Q: What is Apache's DocumentRoot?
 
 /var/www/html
 
@@ -2478,7 +2478,7 @@ watchfor /success|accepted|rgriffith/
 --tail-file=/var/log/messages --pid-file=/var/run/swatch.pid
 
 ### NOTE: The above will watch /var/log/messages for messages
-containing “success or accepted or rgriffith”.  If found, it will
+containing "success or accepted or rgriffith".  If found, it will
 email robrg the message.
 
 
@@ -2518,7 +2518,7 @@ Q: Write a pre-commit hook.
 
 
 #!/bin/sh
-files=$(git diff –cached –name-only –diff-filter=ACM | grep ‘.go$’)
+files=$(git diff -cached -name-only -diff-filter=ACM | grep '.go$')
 if [ -z files ]; then
 exit 0
 fi
@@ -2526,11 +2526,11 @@ unfmtd=$(gofmt -l $files)
 if [ -z unfmtd ]; then
 exit 0
 fi
-echo “Some .go files are not fmt’d”
+echo "Some .go files are not fmt'd"
 exit 1
 
 
-Q: How can you tell what kind of system you are on … System V, Upstart, Systemd?
+Q: How can you tell what kind of system you are on ... System V, Upstart, Systemd?
 
 /usr/lib/systemd tells you you're on a systemd based system.
 

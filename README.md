@@ -88,6 +88,7 @@
     $ flask run --host=0.0.0.0 --port=5000
 
        Using docker.
+    $ sudo docker build . -t rgdevops123/devopswebnl
     $ sudo docker run --env-file .env -d --rm --name devopswebnl -p 5000:5000 rgdevops123/devopswebnl
         --env-file .env     ### Use .env environment file.
         -d                  ### Detached mode: Run the container in the background.
