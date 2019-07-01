@@ -9,4 +9,3 @@ gunicorn
 nose2
 pytest
 python-dotenv
-selenium
