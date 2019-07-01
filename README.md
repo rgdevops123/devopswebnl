@@ -67,7 +67,7 @@
     SQLALCHEMY_TRACK_MODIFICATIONS=False
 
 
-### Source your devopsweb profile file commands "flask" and "gunicorn".
+### Source your devopsweb profile for commands "flask" and "gunicorn".
 
     $ . ./.env.sh
 
