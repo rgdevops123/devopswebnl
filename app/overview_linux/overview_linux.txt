@@ -1751,24 +1751,6 @@ IMAP over SSL
   REDIS
 
 
-Q: How do you create an SSL Tunnel?
-
-# ssh -L 8888:smf1-afk-15-sr4.prod.tw.com:31567 nest1.corp.twitter.com -N
-
-  Then go to the website ...
-    Ex: http://127.0.0.1:8888/
-
-   OR
-
-Socket Secure (SOCKS)
-
-# ssh -D 8080 user1@nest1.corp.twitter.com
-
-Network => Advanced => SOCKS Proxy => 127.0.0.1:8080
-
-  Then go to the website ...
-    Ex: http://smf1-afk-15-sr4.prod.tw.com:31567/
-
 
 Q: What are the Private Address Spaces
 
