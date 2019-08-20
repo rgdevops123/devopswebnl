@@ -9,7 +9,7 @@ WORKDIR ${APPDIR}
 ENV FLASK_APP devopswebnl.py
 
 # Copy over the application files.
-COPY config.py devopswebnl.py requirements.txt .env ${APPDIR}
+COPY config.py devopswebnl.py requirements.txt ${APPDIR}
 COPY app app
 COPY migrations migrations
 COPY tests_pytests tests_pytests
