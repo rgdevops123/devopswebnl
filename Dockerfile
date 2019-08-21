@@ -1,24 +1,24 @@
 # Get the latest OS image.
 FROM rgdevops123/rgcentos7.6
 
-# Set the working directory.
+# Set the Working Directory.
 ARG APPDIR="/devopswebnl/"
 WORKDIR ${APPDIR}
 
-# Set the FLASK_APP environment variable.
+# Set the FLASK_APP Environment Variable.
 ENV FLASK_APP devopswebnl.py
 
-# Copy over the application files.
+# Copy over the Application Files.
 COPY config.py devopswebnl.py requirements.txt ${APPDIR}
 COPY app app
 COPY migrations migrations
 COPY tests_pytests tests_pytests
 COPY tests_unittests tests_unittests
 
-# Install dependencies.
+# Install Dependencies.
 RUN pip3 install --no-cache-dir -q -r requirements.txt
 
-# Run the image as a non-root user.
+# Run the Image as a Non-Root User.
 RUN groupadd -g 1000 appuser && \
     useradd -r -u 1000 -g appuser appuser
 RUN chown -R appuser:appuser ${APPDIR}
