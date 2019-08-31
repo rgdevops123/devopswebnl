@@ -99,7 +99,7 @@
     GOTO: http://127.0.0.1:5000
 
 ### ============================================
-### Run Tests on the DEVOPSWEBNL Application.
+### Run Tests on the Application.
     $ pytest -v --disable-pytest-warnings
        -v                          ### Verbose
        --disable-pytest-warnings   ### Disable pytest warnings.
