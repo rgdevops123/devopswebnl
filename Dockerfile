@@ -1,6 +1,9 @@
 # Get the latest OS image.
 FROM rgdevops123/rgcentos7.6
 
+# Set Maintainer.
+LABEL maintainer "rgdevops123@gmail.com"
+
 # Set the Working Directory.
 ARG APPDIR="/devopswebnl/"
 WORKDIR ${APPDIR}
@@ -17,6 +20,11 @@ COPY tests_unittests tests_unittests
 
 # Install Dependencies.
 RUN pip3 install --no-cache-dir -q -r requirements.txt
+
+# Set a Health Check.
+HEALTHCHECK --interval=5s \
+            --timeout=5s \
+            CMD curl -f http://127.0.0.1:5000 || exit 1
 
 # Run the Image as a Non-Root User.
 RUN groupadd -g 1000 appuser && \
