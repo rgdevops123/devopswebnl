@@ -98,6 +98,16 @@
 
     GOTO: http://127.0.0.1:5000
 
+       Using ansible.
+          Startup:
+    $ ansible -i hosts web --key-file ~/user1.pem -u centos -b \
+      -m shell -a "docker run --privileged=true \
+      --env DEVOPSWEB_CONFIG=Test1 -d --rm --name devopswebnl \
+      -p 5000:5000 rgdevops123/devopswebnl"
+          Shutdown:
+    $ ansible -i hosts web --key-file ~/user1.pem -u centos -b \
+      -m shell -a "docker rm -f devopswebnl"
+
 ### ============================================
 ### Run Tests on the DEVOPSWEB Application.
     $ pytest -v --disable-pytest-warnings
