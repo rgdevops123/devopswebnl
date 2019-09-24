@@ -102,7 +102,7 @@
           Startup:
     $ ansible -i hosts web --key-file ~/user1.pem -u centos -b \
       -m shell -a "docker run --privileged=true \
-      --env DEVOPSWEB_CONFIG=Test1 -d --rm --name devopswebnl \
+      --env DEVOPSWEB_CONFIG_MODE=Test1 -d --rm --name devopswebnl \
       -p 5000:5000 rgdevops123/devopswebnl"
           Shutdown:
     $ ansible -i hosts web --key-file ~/user1.pem -u centos -b \
