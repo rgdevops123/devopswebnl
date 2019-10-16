@@ -1,4 +1,3 @@
-ICONMOBILE
 
    *** Installing SQLite3 Database. ***
 
